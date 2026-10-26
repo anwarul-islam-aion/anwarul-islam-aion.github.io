@@ -2,8 +2,9 @@ import { useLayoutEffect, useState } from 'react';
 import usePrefersReducedMotion from '../hooks/usePrefersReducedMotion';
 
 /**
- * Craft in the page margins: a drone crossing the top gutter, a second holding
- * station in the right gutter, and a rover crawling the bottom.
+ * Craft in the page margins: two drones crossing the top gutter in opposite
+ * directions, a third holding station in the right gutter, and a rover crawling
+ * the bottom.
  *
  * Same monoline hand as the base station and the RIS in <BeamField />, and the
  * same two gates: desktop only, because the gutters do not exist below `lg`,
@@ -154,10 +155,28 @@ export default function Fleet() {
       fill="none"
       aria-hidden="true"
     >
-      {/* Top gutter: flies in from the left, fades before the RIS. */}
+      {/* Top gutter, outbound: flies in from the left, fades before the RIS. */}
       <g className="craft-cross" style={{ '--travel': `${topTravel}px`, animationDuration: '27s' }}>
         <g className="craft-bob" style={{ '--bob': '6px', animationDuration: '3.4s' }}>
           <g transform={`translate(-40 ${TOP_BAND})`}>
+            <Drone />
+          </g>
+        </g>
+      </g>
+
+      {/* Top gutter, inbound: the same band the other way, on a longer clock and
+          started mid-run by a negative delay, so the two never pace each other.
+          The glyph is symmetric, so flying left needs no mirroring. */}
+      <g
+        className="craft-cross"
+        style={{
+          '--travel': `${-(topTravel - 30)}px`,
+          animationDuration: '34s',
+          animationDelay: '-13s',
+        }}
+      >
+        <g className="craft-bob" style={{ '--bob': '8px', animationDuration: '4.1s' }}>
+          <g transform={`translate(${topTravel} ${TOP_BAND})`}>
             <Drone />
           </g>
         </g>
