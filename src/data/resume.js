@@ -61,18 +61,6 @@ export const profile = {
  * heading, that card's meta labels, and the nav indicator. All eight are deep,
  * desaturated tones that clear 5:1 on white, so they stay legible as text.
  */
-/** Bulleted under "Research Interest" on the About card. */
-export const researchInterests = [
-  'Integrated sensing and communication (ISAC) for 6G networks',
-  'Dual-function radar communication and joint waveform optimisation',
-  'Reconfigurable intelligent surfaces and programmable propagation',
-  'Radar signal processing — Pulse-Doppler, MTI and CFAR detection',
-  'Real-time and FPGA-targeted DSP architectures',
-  'RF and antenna design for sensing front-ends',
-  'Machine learning for radar detection and target classification',
-  'Avionics and small-satellite instrumentation',
-];
-
 export const sections = [
   { id: 'about', label: 'About', accent: '#1e3a5f' }, // navy
   { id: 'education', label: 'Education & Skills', accent: '#2f5d62' }, // teal
