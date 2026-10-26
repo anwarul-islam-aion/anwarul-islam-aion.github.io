@@ -1,6 +1,8 @@
-# anwarulislamaion.engineer
+# anwarul-islam-aion.github.io
 
 Personal portfolio — Md Anwarul Islam Aion, Avionics Engineer, radar and ISAC researcher.
+
+**Live:** https://anwarul-islam-aion.github.io/portfolio/
 
 A fixed-viewport card app: the left third holds identity and the section index,
 the right two-thirds is a single card that swings open like a book leaf when you
@@ -10,6 +12,7 @@ pick a section and scrolls inside itself. The page never scrolls on desktop.
 ## Running it
 
 ```bash
+npm install
 npm run dev
 ```
 
@@ -18,6 +21,22 @@ npm run dev
 ## Stack
 
 React 19 · Vite 8 · Tailwind CSS 4 (CSS-first config, no `tailwind.config.js`).
+
+No backend, no API keys, no environment variables — the build is fully static,
+and navigation is hash-based, so no host-side rewrite rules are needed.
+
+## Deployment
+
+`.github/workflows/deploy.yml` builds on Node 22 and publishes `dist/` to
+GitHub Pages on every push to `main`. Nothing to run by hand.
+
+`vite.config.js` sets `base: './'` so the same build serves correctly from a
+domain root or from the `/portfolio/` repository subpath. Keep it relative.
+
+No custom domain is attached. To add one later: put the bare domain in
+`public/CNAME`, set it under Settings → Pages → Custom domain, enable Enforce
+HTTPS, and update the absolute `og:url`, `og:image` and `canonical` URLs in
+`index.html`.
 
 ## Layout
 
@@ -124,6 +143,5 @@ section component returns it early in place of its normal body. Used by
   entirely; Course Instructor and Club Advisor have no `email` and simply omit
   that line. Fill the fields in `references` and each appears on its own.
 - GRE / IELTS scores are placeholders (`000` / `0.0`) in `testScores`.
-- No `og:image` yet — worth generating one before sharing the link.
 - ORCID and ResearchGate glyphs in `Icons.jsx` are drawn by hand to match the
   stroke weight of the rail; swap in the official marks if you prefer them.
