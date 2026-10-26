@@ -1,0 +1,239 @@
+@import 'tailwindcss';
+
+/* ---------------------------------------------------------------- theme --
+   Sand + Navy. Warm paper ground, ink text, navy used only as an accent —
+   never as a large field. Every colour on the site resolves to one of these.  */
+
+@theme {
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', monospace;
+
+  /* Grounds */
+  --color-paper: #f7f3ec; /* page background        */
+  --color-paper-alt: #f0e8db; /* alternate / hover wash */
+  --color-surface: #ffffff; /* cards                  */
+
+  /* Text */
+  --color-ink: #0f172a; /* primary                */
+  --color-ink-soft: #475569; /* secondary              */
+
+  /* Accent */
+  --color-navy: #1e3a5f;
+  --color-navy-hover: #2e4e78;
+
+  /* Warm vermilion reserved for the section index, so it reads at a glance. */
+  --color-nav: #c2410c;
+
+  /* Lines */
+  --color-rule: #ddd5c8; /* borders                */
+  --color-divider: #e7dfd2; /* lighter dividers       */
+
+  /* Used very sparingly — small highlights only. */
+  --color-gold: #c4a46b;
+
+  /* ------------------------------------------------------------ motion --
+     One curve, three durations. Everything on the site animates with these
+     so the whole page reads as one hand. `soft` decelerates hard at the end,
+     which is what makes an entrance feel placed rather than dropped.        */
+  --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+:root {
+  --dur-micro: 150ms; /* hovers, colour changes   */
+  --dur-move: 300ms;  /* transitions between views */
+  --dur-arrive: 720ms; /* the one-time entrance     */
+}
+
+/* -------------------------------------------------------------- arrival --
+   Plays once on load. `backwards` fill holds the opening frame through the
+   delay and then hands the element back to its normal styles — important for
+   the card, whose turn transition owns `transform` afterwards.              */
+
+@keyframes arrive-rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+/* A literal focus pull: blur resolves rather than letter-spacing closing,
+   which would reflow the nowrap name and could overflow the column. */
+@keyframes arrive-focus {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+    filter: blur(6px);
+  }
+}
+
+@keyframes arrive-leaf {
+  from {
+    opacity: 0;
+    transform: rotateY(-10deg);
+  }
+}
+
+/* ---------------------------------------------------------------- beams --
+   The transmission overlay. Each beam is a tapered polygon scaled out from its
+   source, so it extends and widens the way a real lobe does — a stroked line
+   can only ever be a constant-width scratch.
+   Timings mirror src/lib/arrival.js; change them together.                   */
+
+@keyframes beam-extend {
+  from {
+    transform: scale(0.03);
+    opacity: 0.1;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes beam-out {
+  to {
+    opacity: 0;
+  }
+}
+
+/* Nodes animate opacity only — their transform attribute carries the corner
+   placement and would be clobbered by a CSS transform. */
+@keyframes node-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.9;
+  }
+}
+
+@keyframes pulse-out {
+  from {
+    opacity: 0.75;
+    transform: scale(0.25);
+  }
+  to {
+    opacity: 0;
+    transform: scale(2.4);
+  }
+}
+
+@layer utilities {
+  .beam,
+  .beam-incident {
+    transform-box: view-box;
+  }
+
+  /* Per-beam timing comes in as custom properties, so the arrival fan and the
+     shorter re-transmission on each click share one rule. */
+  .beam,
+  .beam-incident {
+    animation:
+      beam-extend var(--ext, 300ms) var(--ease-soft) var(--d, 0ms) backwards,
+      beam-out 420ms ease-out calc(var(--d, 0ms) + var(--ext, 300ms) + var(--hold, 300ms)) forwards;
+  }
+
+  /* The nodes stay put once they have arrived — no fade-out. */
+  .beam-node {
+    opacity: 0;
+    animation: node-in 340ms var(--ease-soft) var(--d) forwards;
+  }
+
+  /* Readouts under each node: a name and a value that keeps changing, so the
+     pair reads as powered-up equipment rather than two static icons. */
+  .node-label,
+  .node-code {
+    font-family: var(--font-mono);
+    font-size: 8.5px;
+    letter-spacing: 0.1em;
+  }
+
+  .node-label {
+    fill: var(--color-ink-soft);
+  }
+
+  .node-code {
+    fill: var(--color-nav);
+    letter-spacing: 0.05em;
+  }
+
+  .beam-pulse {
+    opacity: 0;
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: pulse-out 700ms var(--ease-soft) var(--d) forwards;
+  }
+
+  .arrive {
+    animation: arrive-rise var(--dur-arrive) var(--ease-soft) var(--arrive-delay, 0ms) backwards;
+  }
+
+  .arrive-focus {
+    animation: arrive-focus 700ms var(--ease-soft) var(--arrive-delay, 0ms) backwards;
+  }
+
+  .arrive-leaf {
+    animation: arrive-leaf 620ms var(--ease-soft) var(--arrive-delay, 0ms) backwards;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .arrive,
+    .arrive-focus,
+    .arrive-leaf {
+      animation: none;
+    }
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Flat by design: the palette excludes gradients. */
+  body {
+    background-color: var(--color-paper);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: color-mix(in srgb, var(--color-navy) 16%, transparent);
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-navy);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
+
+@layer utilities {
+  /* Thin scrollbar so the two-column split doesn't get a heavy gutter. */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-rule) transparent;
+  }
+
+  *::-webkit-scrollbar {
+    width: 11px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: var(--color-rule);
+    border: 3px solid var(--color-paper);
+    border-radius: 8px;
+  }
+}
