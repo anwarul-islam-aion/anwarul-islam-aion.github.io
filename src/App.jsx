@@ -4,6 +4,7 @@ import SideRails from './components/SideRails';
 import LeftPanel from './components/LeftPanel';
 import Panel from './components/Panel';
 import BeamField from './components/BeamField';
+import Fleet from './components/Fleet';
 import BottomBar from './components/BottomBar';
 
 export default function App() {
@@ -25,6 +26,8 @@ export default function App() {
       <SideRails />
 
       <BeamField active={active} />
+
+      <Fleet />
 
       {/* Asymmetric gutters: the left rail is gone, so that side only needs
           clearance for the base station, while the right still holds the email

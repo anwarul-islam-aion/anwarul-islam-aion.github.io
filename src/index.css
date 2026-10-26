@@ -118,6 +118,62 @@
   }
 }
 
+/* ------------------------------------------------------------ margin craft --
+   The drones and the rover in the gutters. Crossing and bobbing are separate
+   keyframes on nested groups on purpose: both animate `transform`, so one
+   element cannot carry the pair.                                             */
+@keyframes craft-cross {
+  0% {
+    opacity: 0;
+    transform: translateX(0);
+  }
+  10%,
+  86% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(var(--travel, 100px));
+  }
+}
+
+@keyframes craft-bob {
+  0%,
+  100% {
+    transform: translateY(calc(var(--bob, 8px) * -0.5));
+  }
+  50% {
+    transform: translateY(calc(var(--bob, 8px) * 0.5));
+  }
+}
+
+/* A rotor at this size is a disc, not blades: thinning and filling reads as
+   spin far better than anything that tries to draw the blades. */
+@keyframes rotor-spin {
+  0%,
+  100% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(0.3);
+  }
+}
+
+@keyframes wheel-turn {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes craft-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 @layer utilities {
   .beam,
   .beam-incident {
@@ -164,6 +220,43 @@
     animation: pulse-out 700ms var(--ease-soft) var(--d) forwards;
   }
 
+  /* The whole fleet waits for the arrival transmission to finish, so it reads
+     as traffic that was always there rather than part of the entrance. */
+  .craft-layer {
+    animation: craft-fade-in 900ms var(--ease-soft) 1600ms backwards;
+  }
+
+  /* view-box, so one unit of translate is one unit of the viewBox and the
+     travel distances can be handed in as plain pixel values. */
+  .craft-cross,
+  .craft-bob {
+    transform-box: view-box;
+  }
+
+  /* Durations are set per craft from the component; these are the fallbacks. */
+  .craft-cross {
+    animation: craft-cross 27s linear infinite;
+  }
+
+  .craft-bob {
+    animation: craft-bob 3.4s ease-in-out infinite;
+  }
+
+  /* fill-box, so each spins about its own centre rather than the viewBox origin. */
+  .rotor,
+  .wheel {
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+
+  .rotor {
+    animation: rotor-spin 0.36s linear infinite;
+  }
+
+  .wheel {
+    animation: wheel-turn 2.6s linear infinite;
+  }
+
   .arrive {
     animation: arrive-rise var(--dur-arrive) var(--ease-soft) var(--arrive-delay, 0ms) backwards;
   }
@@ -179,7 +272,12 @@
   @media (prefers-reduced-motion: reduce) {
     .arrive,
     .arrive-focus,
-    .arrive-leaf {
+    .arrive-leaf,
+    .craft-layer,
+    .craft-cross,
+    .craft-bob,
+    .rotor,
+    .wheel {
       animation: none;
     }
   }
