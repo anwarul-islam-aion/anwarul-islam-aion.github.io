@@ -14,3 +14,11 @@ Thumbs.db
 .vscode/*
 !.vscode/extensions.json
 .idea
+
+# Local only. This repository publishes a website, so it carries only what the
+# live site needs to build and run: index.html, src/, public/, the two package
+# files, vite.config.js and the Pages workflow. Notes, instructions and editor
+# or agent config stay on this machine and are not pushed.
+.claude/
+CLAUDE.md
+README.md

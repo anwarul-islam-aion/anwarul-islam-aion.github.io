@@ -15,11 +15,15 @@ export const profile = {
   resumeUrl: asset('resume.pdf'),
   resumeFileName: 'Md-Anwarul-Islam-Aion-Resume.pdf',
   email: 'aion.aaub@gmail.com',
-  phone: '+8801717617918',
-  website: 'https://anwarulislamaion.engineer',
+  website: 'https://anwarul-islam-aion.github.io',
+  /* The WhatsApp handle lives in `socials` below, where it is rendered. It was
+     briefly here too, which is two places to forget. */
   /**
    * `color` is the platform's brand colour, darkened where the stock value is
    * too pale to clear 3:1 against the sand ground (ORCID green, RG teal).
+   *
+   * An entry with `url: null` is not a link — WhatsApp usernames have no public
+   * URL form, so that one renders as a chip carrying `handle` in its tooltip.
    */
   socials: [
     {
@@ -52,16 +56,23 @@ export const profile = {
       url: 'https://www.researchgate.net/profile/Md-Anwarul-Aion',
       color: '#00857a',
     },
+    {
+      name: 'WhatsApp',
+      icon: 'whatsapp',
+      url: null,
+      handle: 'anwarul.islam.aion',
+      color: '#1d7a45',
+    },
     { name: 'Email', icon: 'mail', url: 'mailto:aion.aaub@gmail.com', color: '#b4472b' },
   ],
 };
 
 /** Bulleted under "Research Interest" on the About card. */
 export const researchInterests = [
-  'Radar signal processing — Pulse-Doppler radar built end to end, MTI and CFAR detection',
+  'Radar signal processing. A Pulse-Doppler radar built end to end, with MTI and CFAR detection',
   'Wireless communication and antenna design',
   'Integrated sensing and communication (ISAC), where radar and communication combine',
-  "5G downlink sensing — sensing from a base station's own transmitted signal, and how much sensing quality survives the scheduler",
+  "5G downlink sensing. A base station senses from its own transmitted signal. The question is how much sensing quality survives the scheduler",
   'Reconfigurable intelligent surfaces, and bringing RIS and ISAC together for future wireless communication',
   '5G C-band interference detection and mitigation for FMCW radar altimeters on SDR',
   'Factor-graph SLAM for GNSS-denied navigation with computer vision',
@@ -84,42 +95,75 @@ export const sections = [
   { id: 'references', label: 'References', accent: '#6b5b4e' }, // taupe
 ];
 
-export const experience = [
+/**
+ * Paid, supervised posts. Kept apart from `teamExperience` below: the
+ * assistantship is a job, the CanSat and rover entries are competition team
+ * roles, and running them in one list read as if they were the same thing.
+ * Description is the ISAC-CV's, word for word.
+ */
+export const jobs = [
   {
-    date: '2026 — Present',
-    roles: [{ title: 'Research Assistant', period: '2026 — Present' }],
+    date: 'Sep 2026 to Present',
+    roles: [{ title: 'Research Assistant', period: 'Sep 2026 to Present' }],
     org: 'AAUB Radar Project',
     orgUrl: 'https://aaub.edu.bd',
     location: 'Aviation and Aerospace University, Bangladesh',
-    supervisor: 'Air Commodore Dr. Mohammad Akhter Jamil',
+    supervisor: 'Air Cdre Dr. Mohammad Akhter Jamil, Dean',
     hours: '20 hrs/week',
     description:
-      'Developing a hardware-oriented Pulse-Doppler radar system in MATLAB/Simulink, implementing the end-to-end DSP chain — I/Q signal processing, moving-target indication, and CFAR detection. Designing real-time radar data acquisition with UDP-based streaming and legacy radar display integration, targeting an FPGA-compatible implementation.',
+      "Appointed by special exception as the first undergraduate in the university's history to hold a paid research assistantship. Building a Pulse-Doppler radar end to end. The work covers I/Q processing, MTI and CFAR detection, real-time acquisition over UDP and integration with a legacy radar display. The target is an FPGA-compatible build.",
     tags: ['MATLAB', 'Simulink', 'DSP', 'MTI', 'CFAR', 'UDP', 'FPGA'],
     journey: [],
     gallery: [],
   },
+];
+
+/**
+ * Degree research. Separate from `jobs` for the same reason the ISAC-CV splits
+ * them: the assistantship is a post, this is the thesis. The project card in
+ * `projects` carries the plain-language version; this entry carries the things
+ * a card cannot — period, supervisor, and that it is the degree work.
+ */
+export const research = [
   {
-    date: '2024 — Present',
+    date: '2026 to 2027',
+    roles: [{ title: 'Undergraduate Thesis', period: '2026 to 2027' }],
+    org: 'RIS-assisted Integrated Sensing and Communication',
+    orgUrl: null,
+    location: 'Aviation and Aerospace University, Bangladesh',
+    supervisor: 'Air Cdre Dr. Mohammad Akhter Jamil, Dean',
+    hours: null,
+    description:
+      'Cellular ISAC: getting a 5G base station to sense what is around it from its own downlink, without giving up the data it carries. One subsystem derives the range-resolution limit a reconfigurable intelligent surface imposes, as an element-bandwidth criterion, and tests it against CST full-wave simulation and hardware measurement. The other measures, in simulation, how much sensing quality survives as scheduler load changes.',
+    tags: ['Cellular ISAC', '5G NR', 'RIS', 'CST', 'Range Resolution'],
+    journey: [],
+    gallery: [],
+  },
+];
+
+/** Competition team roles — unpaid, and read as projects rather than posts. */
+export const teamExperience = [
+  {
+    date: '2024 to Present',
     roles: [
-      { title: 'Team Lead', period: '2026 — Present' },
-      { title: 'Electrical Engineer', period: '2024 — 2025' },
+      { title: 'Team Lead', period: '2026 to Present' },
+      { title: 'Electrical Engineer', period: '2024 to 2025' },
     ],
-    org: 'AAUB CanSat — Team Ababil',
+    org: 'AAUB CanSat (Team Ababil)',
     orgUrl: null,
     location: 'Lalmonirhat, Bangladesh',
     supervisor: null,
     hours: null,
     description:
-      "Core electrical and power-systems engineer for a CanSat-class small satellite, now leading the team. Built the power architecture that carried Ababil to the CanSat 2025 finals in Virginia, USA — run by the American Astronautical Society and NASA — making Team Ababil the country's first Global Finalist in the competition. Co-authored and presented the team's peer-reviewed paper at MEPCON 2025.",
+      "Core electrical and power-systems engineer for a CanSat-class small satellite, now leading the team. Built the power architecture that carried Ababil to the CanSat 2025 finals in Virginia, USA. The competition is run by the American Astronautical Society and NASA. Team Ababil became the country's first Global Finalist in it. Co-authored and presented the team's peer-reviewed paper at MEPCON 2025.",
     tags: ['Power Systems', 'PCB Design', 'Altium Designer', 'Embedded', 'Telemetry'],
     journey: [],
     gallery: [],
   },
   {
-    date: 'Nov 2024 — Apr 2026',
-    roles: [{ title: 'Science Module Lead', period: 'Nov 2024 — Apr 2026' }],
-    org: 'AAUB Mars Rover — Team Rover71',
+    date: 'Nov 2024 to Apr 2026',
+    roles: [{ title: 'Science Module Lead', period: 'Nov 2024 to Apr 2026' }],
+    org: 'AAUB Mars Rover (Team Rover71)',
     orgUrl: null,
     location: 'Lalmonirhat, Bangladesh',
     supervisor: null,
@@ -179,11 +223,11 @@ export const projects = [
   },
   {
     art: 'isac',
-    title: 'RIS-Assisted Dual-Function Radar Communication',
+    title: 'Cellular ISAC: Sensing from a 5G Network',
     url: null,
     description:
-      'Investigating reconfigurable intelligent surfaces for dual-function radar communication systems in 6G integrated sensing and communication — Pulse-Doppler radar modelling, waveform optimisation, and performance evaluation through MATLAB simulation. The direction I plan to carry into doctoral research.',
-    tags: ['6G', 'ISAC', 'RIS', 'Waveform Design'],
+      'Making a mobile network sense as well as communicate. A 5G base station already fills its cell with radio. The thesis asks how much it can learn about its surroundings from its own signal coming back, without giving up the data it exists to carry. It comes in two parts. One is a reconfigurable intelligent surface that reshapes the signal path, tested in full-wave simulation and against a real panel. The other is how much sensing quality survives once the scheduler is busy with real users. This is the direction I plan to carry into doctoral research.',
+    tags: ['Cellular ISAC', '5G NR', 'RIS', 'Radar Sensing'],
     meta: 'Undergraduate Thesis',
     journey: [],
     gallery: [],
@@ -201,7 +245,7 @@ export const projects = [
   },
   {
     art: 'rover',
-    title: 'LIFE-MAP — Biosignature Detection Protocol',
+    title: 'LIFE-MAP: Biosignature Detection Protocol',
     url: 'https://doi.org/10.1109/TENCON66050.2025.11375044',
     description:
       'An indigenous biosignature detection protocol using multi-biomolecule based analysis, built as the Science & Environment Analysis module of the Rover71 Mars rover. Published at IEEE TENCON 2025.',
@@ -292,7 +336,7 @@ export const posters = [
     year: '2024',
     doi: '10.13140/RG.2.2.16524.78724',
     intro:
-      "A literature-based conceptual overview of quantum entanglement — “spooky action at a distance” — framed around the Einstein–Podolsky–Rosen paradox and Einstein's critique of nonlocality.",
+      "A literature-based conceptual overview of quantum entanglement, the effect Einstein called “spooky action at a distance.” It is framed around the Einstein–Podolsky–Rosen paradox and Einstein's critique of nonlocality.",
     abstract:
       "This poster presents a literature-based and conceptual overview of quantum entanglement, often referred to as “spooky action at a distance,” with emphasis on its theoretical foundations and historical context. Framed around the Einstein–Podolsky–Rosen (EPR) paradox and Einstein's critique of nonlocality, the discussion synthesizes established explanations of superposition, entangled states, wavefunction collapse, and the no-signaling theorem from textbooks and peer-reviewed sources. The poster explains how quantum entanglement leads to strong correlations between spatially separated particles without violating relativistic causality. No original experimental or numerical results are presented; the work is intended as an educational review introducing students and early researchers to this foundational quantum phenomenon and its relevance to modern quantum communication technologies.",
   },
@@ -305,7 +349,7 @@ export const posters = [
     year: '2024',
     doi: '10.13140/RG.2.2.14641.95844',
     intro:
-      'A review of the aerodynamic behaviour of oblique-wing aircraft, where the wing rotates about the fuselage so sweep angle differs between the two sides — trading reduced wave drag at high subsonic and supersonic speeds against the asymmetry it introduces.',
+      'A review of the aerodynamic behaviour of oblique-wing aircraft. The wing rotates about the fuselage, so the sweep angle differs between the two sides. That buys lower wave drag at high subsonic and supersonic speeds, at the cost of the asymmetry it introduces.',
     abstract:
       'Oblique-wing aircraft represent a distinctive unconventional configuration in which the wing rotates about the fuselage, allowing its sweep angle to vary between the two sides of the aircraft. This configuration offers the potential to reduce wave drag at high subsonic and supersonic speeds while maintaining favorable aerodynamic characteristics during lower-speed flight. However, the asymmetric geometry introduced by wing rotation produces complex aerodynamic interactions, including variations in lift distribution, pitching moment, side force, and induced drag. This review examines the fundamental aerodynamic characteristics of oblique-wing aircraft across different flight conditions and wing orientations. Particular attention is given to the effects of wing sweep angle, aspect ratio, Mach number, angle of attack, and configuration geometry on aerodynamic performance and stability. Previous analytical, computational, and experimental studies are compared to identify major aerodynamic trends, design challenges, and performance advantages. The review also discusses the potential of modern computational fluid dynamics and optimization techniques for improving oblique-wing configurations. Overall, oblique-wing technology demonstrates significant potential for achieving efficient high-speed flight while retaining adaptable aerodynamic performance, although aerodynamic asymmetry, structural complexity, and flight-control requirements remain important challenges for practical implementation.',
   },
@@ -314,7 +358,7 @@ export const posters = [
 /** Listed newest first, like every other dated list on the site. */
 export const grants = [
   {
-    period: 'Jul 2024 — Jun 2025',
+    period: 'Jul 2024 to Jun 2025',
     title:
       'Design & Development of a Scientific Exploration and Environmental Analysis Module for Assessing Interplanetary Habitability',
     team: 'Team Rover71',
@@ -323,7 +367,7 @@ export const grants = [
     principalInvestigator: 'Asst Prof Samin Rahman',
   },
   {
-    period: 'Oct 2023 — Jun 2024',
+    period: 'Oct 2023 to Jun 2024',
     title:
       'Design and Development of an Indigenous Mars Rover for Inter-planetary Scientific Exploration',
     team: 'Team Rover71',
@@ -335,7 +379,7 @@ export const grants = [
 
 export const education = [
   {
-    date: '2023 — 2027 (Expected)',
+    date: '2023 to 2027 (Expected July 2027)',
     degree: 'BSc in Avionics Engineering',
     school: 'Aviation and Aerospace University, Bangladesh',
     schoolUrl: 'https://aaub.edu.bd',
@@ -343,7 +387,7 @@ export const education = [
     result:
       'CGPA 3.62 / 4.00 (through 6th semester) · under the supervision of Bangladesh Air Force',
     detail:
-      'Thesis: RIS-assisted Integrated Sensing and Communication (ISAC), in two subsystems — the range-resolution limits of a reconfigurable intelligent surface, derived as an element-bandwidth criterion and tested against CST full-wave simulation and hardware measurement; and 5G downlink sensing, measuring how sensing degrades as scheduler load changes.',
+      'Thesis: RIS-assisted Integrated Sensing and Communication. This is cellular ISAC, in two subsystems. The first derives the range-resolution limit of a reconfigurable intelligent surface as an element-bandwidth criterion, and tests it against CST full-wave simulation and hardware measurement. The second is 5G downlink sensing. It measures in simulation how sensing degrades as scheduler load changes.',
     curriculumUrl: asset('avionics-curriculum.pdf'),
     curriculumFileName: 'AAUB-Avionics-Engineering-Curriculum-OBE.pdf',
     /* The curriculum document predates both renamings, so it carries the old
@@ -395,7 +439,7 @@ export const education = [
     school: 'Notre Dame College',
     schoolUrl: 'https://ndc.edu.bd',
     location: 'Dhaka, Bangladesh',
-    result: 'Perfect GPA — 5.00 / 5.00',
+    result: 'Perfect GPA, 5.00 / 5.00',
     detail: null,
     coursework: null,
   },
@@ -405,7 +449,7 @@ export const education = [
     school: 'Kushtia Zilla School',
     schoolUrl: null,
     location: 'Kushtia, Bangladesh',
-    result: 'Perfect GPA — 5.00 / 5.00 · National Merit Scholarship',
+    result: 'Perfect GPA, 5.00 / 5.00 · National Merit Scholarship',
     detail: null,
     coursework: null,
   },
@@ -448,26 +492,27 @@ export const awards = [
 ];
 
 export const leadership = [
-  { period: '2026 — Present', role: 'President', org: 'AAUB Debating Club (AAUB-DC)' },
-  { period: '2022 — 2023', role: 'Office Secretary', org: 'Kushtia Debating Society (KDS)' },
+  { period: '2026 to Present', role: 'President', org: 'AAUB Debating Club (AAUB-DC)' },
+  { period: '2022 to 2023', role: 'Office Secretary', org: 'Kushtia Debating Society (KDS)' },
   {
-    period: '2021 — 2023',
+    period: '2021 to 2023',
     role: 'Core Debater & Executive Member',
     org: 'Notre Dame Debating Club (NDDC)',
   },
-  { period: '2020 — 2022', role: 'Vice President', org: 'Kushtia Science Research Club (KSRC)' },
+  { period: '2020 to 2022', role: 'Vice President', org: 'Kushtia Science Research Club (KSRC)' },
   {
-    period: '2018 — 2020',
+    period: '2018 to 2020',
     role: 'Core Debater & Joint General Secretary',
     org: 'Kushtia Zilla School Debating Club (KZSDC)',
   },
 ];
 
-/** Placeholder scores — update when the real ones land. */
-export const testScores = [
-  { label: 'GRE', score: '000', note: 'Quant 000' },
-  { label: 'IELTS', score: '0.0', note: null },
-];
+/**
+ * GRE and IELTS are not published yet — the exams are still ahead. The block
+ * was pulled from Education.jsx on 26 Oct 2026 rather than left showing
+ * placeholder zeros, which read as real scores on the live page. Put the
+ * section back when the real numbers land.
+ */
 
 /**
  * `relation` is the affiliation to me — the left-hand label on the card.
@@ -514,7 +559,10 @@ export const references = [
 ];
 
 /**
- * Verbatim from the master resume's Skills table.
+ * The union of both resumes' skills tables: the wireless, radar and RF rows
+ * come from ISAC-CV/sections/05-skills.tex, the rest from
+ * MasterResume/sections/02-skills.tex. Wireless and radar lead, because that is
+ * what the thesis and the assistantship are about.
  * `hi` marks the terms the LaTeX source highlights; `note` is the parenthetical.
  */
 export const skills = [
@@ -528,6 +576,24 @@ export const skills = [
     ],
   },
   {
+    category: 'Radar & Signal Processing',
+    items: [
+      { name: 'Matched Filtering' },
+      { name: 'Range–Doppler Processing', hi: true },
+      { name: 'MTI', hi: true, note: 'Moving-Target Indication' },
+      { name: 'CFAR Detection', hi: true },
+      { name: 'I/Q Acquisition Chains' },
+    ],
+  },
+  {
+    category: 'RF & Electromagnetics',
+    items: [
+      { name: 'CST Studio Suite', hi: true, note: 'full-wave unit-cell and 128-element panel' },
+      { name: 'RIS & Antenna Design', hi: true },
+      { name: 'LTspice', note: 'Analog & Power Circuit Simulation' },
+    ],
+  },
+  {
     category: 'Programming & AI',
     items: [
       { name: 'Python', hi: true, note: 'NumPy, SciPy, scikit-learn, OpenCV' },
@@ -538,12 +604,12 @@ export const skills = [
     ],
   },
   {
+    /* CST and LTspice moved up to RF & Electromagnetics — they were listed
+       here when the site had no RF row of its own. */
     category: 'Modeling & Simulation',
     items: [
       { name: 'MATLAB/Simulink', hi: true, note: 'Signal Processing & System Modeling' },
       { name: 'GTSAM', hi: true, note: 'Factor-Graph Estimation' },
-      { name: 'CST Studio Suite', hi: true, note: 'RF & Antenna Design' },
-      { name: 'LTspice', hi: true, note: 'Analog & Power Circuit Simulation' },
     ],
   },
   {

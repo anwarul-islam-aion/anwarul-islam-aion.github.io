@@ -8,7 +8,7 @@ export default function Honors() {
         <li key={`${award.year}-${award.detail}`} className="mb-3">
           <CompactRow lead={award.year} leadWidth="narrow">
             <span className="text-base font-medium text-ink">{award.title}</span>
-            <span className="text-base text-ink-soft"> — {award.detail}</span>
+            <span className="text-base text-ink-soft">: {award.detail}</span>
           </CompactRow>
         </li>
       ))}

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { education, skills, testScores, profile } from '../../data/resume';
+import { education, skills, profile } from '../../data/resume';
 import { Card, Subheading, DefinitionRow, ActionLink, MarkerList, MoreButton } from '../ui';
 import SubPage from '../SubPage';
 import { DownloadIcon } from '../Icons';
@@ -110,16 +110,8 @@ export default function Education() {
         ))}
       </ol>
 
-      <Subheading>GRE &amp; IELTS</Subheading>
-
-      <dl className="mb-14">
-        {testScores.map((test) => (
-          <DefinitionRow key={test.label} term={test.label}>
-            <span className="font-semibold text-ink">{test.score}</span>
-            {test.note && <span> ({test.note})</span>}
-          </DefinitionRow>
-        ))}
-      </dl>
+      {/* GRE & IELTS sat here. Pulled 26 Oct 2026 — the exams are still ahead,
+          and placeholder zeros read as real scores. Restore once they land. */}
 
       <Subheading>Skills</Subheading>
 

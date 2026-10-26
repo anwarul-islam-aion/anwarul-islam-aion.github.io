@@ -30,21 +30,32 @@ export default function BottomBar() {
         {/* Mail is omitted — the email already lives on the right-hand rail. */}
         {profile.socials
           .filter((social) => social.icon !== 'mail')
-          .map(({ name, icon, url, color }) => (
-            <li key={name}>
-              <a
-                style={{ color }}
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-gold transition duration-200 hover:-translate-y-0.5 hover:border-current focus-visible:-translate-y-0.5 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
-                href={url}
-                target="_blank"
-                rel="noreferrer noopener"
-                title={name}
-              >
-                <span className="sr-only">{name}</span>
-                <SocialIcon name={icon} />
-              </a>
-            </li>
-          ))}
+          .map(({ name, icon, url, color, handle }) => {
+            /* No url means no link: WhatsApp usernames have no public URL form,
+               so that one is a chip showing the handle rather than a dead href. */
+            const Shell = url ? 'a' : 'span';
+            const linkProps = url
+              ? { href: url, target: '_blank', rel: 'noreferrer noopener' }
+              : {};
+
+            return (
+              <li key={name}>
+                <Shell
+                  style={{ color }}
+                  className={`flex h-10 w-10 items-center justify-center rounded-full border border-gold transition duration-200 motion-reduce:transition-none ${
+                    url
+                      ? 'hover:-translate-y-0.5 hover:border-current focus-visible:-translate-y-0.5 motion-reduce:hover:translate-y-0'
+                      : 'cursor-default'
+                  }`}
+                  title={handle ? `${name}: ${handle}` : name}
+                  {...linkProps}
+                >
+                  <span className="sr-only">{handle ? `${name}: ${handle}` : name}</span>
+                  <SocialIcon name={icon} />
+                </Shell>
+              </li>
+            );
+          })}
       </ul>
 
       {/* Runs out of the card's right edge and terminates exactly on the email
