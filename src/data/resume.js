@@ -1,3 +1,4 @@
+import { asset } from '../lib/asset.js';
 
 export const profile = {
   name: 'Md Anwarul Islam Aion',
@@ -10,8 +11,8 @@ export const profile = {
     'Technical Writer',
   ],
   location: 'Lalmonirhat, Bangladesh',
-  photo: '/profile.png',
-  resumeUrl: '/resume.pdf',
+  photo: asset('profile.png'),
+  resumeUrl: asset('resume.pdf'),
   resumeFileName: 'Md-Anwarul-Islam-Aion-Resume.pdf',
   email: 'aion.aaub@gmail.com',
   phone: '+8801717617918',
@@ -267,8 +268,8 @@ export const posters = [
   {
     title: 'A Conceptual Review of Quantum Entanglement and the EPR Paradox',
     url: 'https://www.researchgate.net/publication/400336650_A_Conceptual_Review_of_Quantum_Entanglement_and_the_EPR_Paradox',
-    image: '/poster-quantum-entanglement.jpg',
-    thumb: '/poster-quantum-entanglement-thumb.jpg',
+    image: asset('poster-quantum-entanglement.jpg'),
+    thumb: asset('poster-quantum-entanglement-thumb.jpg'),
     date: 'March 2024',
     year: '2024',
     doi: '10.13140/RG.2.2.16524.78724',
@@ -280,8 +281,8 @@ export const posters = [
   {
     title: 'A Comprehensive Review of the Aerodynamic Characteristics of Oblique-Wing Aircraft',
     url: 'https://www.researchgate.net/publication/400336610_A_Comprehensive_Review_of_the_Aerodynamic_Characteristics_of_Oblique-Wing_Aircraft',
-    image: '/poster-oblique-wing.jpg',
-    thumb: '/poster-oblique-wing-thumb.jpg',
+    image: asset('poster-oblique-wing.jpg'),
+    thumb: asset('poster-oblique-wing-thumb.jpg'),
     date: 'February 2024',
     year: '2024',
     doi: '10.13140/RG.2.2.14641.95844',
@@ -325,7 +326,7 @@ export const education = [
       'CGPA 3.60 / 4.00 (through 6th semester) · under the supervision of Bangladesh Air Force',
     detail:
       'Thesis: Investigating RIS-assisted Dual-Function Radar Communication Systems for 6G Integrated Sensing and Communication.',
-    curriculumUrl: '/avionics-curriculum.pdf',
+    curriculumUrl: asset('avionics-curriculum.pdf'),
     curriculumFileName: 'AAUB-Avionics-Engineering-Curriculum-OBE.pdf',
     /* The curriculum document predates both renamings, so it carries the old
        university and department names on its cover. */
