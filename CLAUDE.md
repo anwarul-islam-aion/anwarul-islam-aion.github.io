@@ -48,4 +48,7 @@ No custom domain is attached. If one is added later:
   Attachments)
 - `src/data/resume.js` — all CV content lives here; edit this to update the
   site, not the components
-- `public/` — resume PDF, posters, profile image, favicon
+- `public/` — resume PDF, posters, profile image, favicon. Reference these
+  through `asset()` from `src/lib/asset.js`, never as root-absolute paths:
+  the site is served from a `/portfolio/` subpath, where `/resume.pdf`
+  resolves to the domain root and 404s.

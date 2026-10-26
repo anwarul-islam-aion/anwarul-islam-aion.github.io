@@ -136,7 +136,8 @@ section component returns it early in place of its normal body. Used by
   and `gallery` (array of `{ src, caption }`) fields. Fill them and the Details
   sub-page grows a "The Build" section and an album; until then it shows the
   description, artwork, tags and a short "on the way" line. Put images in
-  `public/` and reference them as `/name.jpg`.
+  `public/` and reference them as `asset('name.jpg')` (`src/lib/asset.js`),
+  never as a root-absolute `/name.jpg` — that breaks under a subpath deploy.
 - **Oblique-wing poster DOI** — `doi` is `null` on that entry in `posters`; the
   DOI line is hidden on both the card and the sub-page until it's filled.
 - **References** — the Research Supervisor entry has no `name` and is skipped
