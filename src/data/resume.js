@@ -14,6 +14,9 @@ export const profile = {
   photo: asset('profile.png'),
   resumeUrl: asset('resume.pdf'),
   resumeFileName: 'Md-Anwarul-Islam-Aion-Resume.pdf',
+  /** The two-page academic CV — research-facing, distinct from the resume. */
+  cvUrl: asset('cv.pdf'),
+  cvFileName: 'Md-Anwarul-Islam-Aion-Academic-CV.pdf',
   email: 'aion.aaub@gmail.com',
   phone: '+8801717617918',
   website: 'https://anwarulislamaion.engineer',
@@ -222,8 +225,21 @@ export const projects = [
 export const publications = [
   {
     title:
-      'Task-Oriented Semantic State Reduction for Visual Teach-and-Repeat: Preserving Cross-Track Information by Eliminating Weakly Observable Landmark Orientation',
-    venue: 'Robotics and Autonomous Systems (Elsevier)',
+      'Range-Resolution Limits of RIS-Assisted Radar: An Element-Bandwidth Criterion and Its Full-Wave Test',
+    venue:
+      'IEEE International Conference on Communications (ICC), SAC: Integrated Sensing and Communication',
+    place: null,
+    year: '2027',
+    status: 'Submitted',
+    doi: null,
+    url: null,
+    abstract: '',
+    presentation: null,
+  },
+  {
+    title:
+      'The Cross-Track Information Cost of Weakly Observable Landmark Orientation: A Closed-Form Retention Law and Its Operating Conditions in Visual Teach-and-Repeat',
+    venue: 'Journal of Field Robotics (Wiley)',
     place: null,
     year: '2026',
     status: 'Under review',
@@ -323,9 +339,9 @@ export const education = [
     schoolUrl: 'https://aaub.edu.bd',
     location: 'Lalmonirhat, Bangladesh',
     result:
-      'CGPA 3.60 / 4.00 (through 6th semester) · under the supervision of Bangladesh Air Force',
+      'CGPA 3.62 / 4.00 (through 6th semester) · under the supervision of Bangladesh Air Force',
     detail:
-      'Thesis: Investigating RIS-assisted Dual-Function Radar Communication Systems for 6G Integrated Sensing and Communication.',
+      'Thesis: RIS-assisted Integrated Sensing and Communication (ISAC), in two subsystems — the range-resolution limits of a reconfigurable intelligent surface, derived as an element-bandwidth criterion and tested against CST full-wave simulation and hardware measurement; and 5G downlink sensing, measuring how sensing degrades as scheduler load changes.',
     curriculumUrl: asset('avionics-curriculum.pdf'),
     curriculumFileName: 'AAUB-Avionics-Engineering-Curriculum-OBE.pdf',
     /* The curriculum document predates both renamings, so it carries the old
@@ -516,6 +532,15 @@ export const references = [
  */
 export const skills = [
   {
+    category: 'Wireless & 5G',
+    items: [
+      { name: 'OpenAirInterface', hi: true, note: 'gNB, core network' },
+      { name: '5G NR', hi: true, note: 'TDD, SSB, CSI-RS, PDSCH, scheduling' },
+      { name: 'OFDM Radar / ISAC', hi: true },
+      { name: 'MATLAB 5G Toolbox' },
+    ],
+  },
+  {
     category: 'Programming & AI',
     items: [
       { name: 'Python', hi: true, note: 'NumPy, SciPy, scikit-learn, OpenCV' },
@@ -539,7 +564,7 @@ export const skills = [
     items: [
       { name: 'Altium Designer', hi: true, note: 'PCB Design' },
       { name: 'FreeRTOS', hi: true, note: 'Embedded Real-Time Systems' },
-      { name: 'SDR', hi: true, note: 'ADALM-Pluto, GNU Radio' },
+      { name: 'SDR', hi: true, note: 'ADALM-Pluto (libiio), GNU Radio, USRP B210' },
       { name: 'Real-Time C++', hi: true, note: 'CMake, Ring Buffers, UDP Streaming' },
     ],
   },

@@ -138,11 +138,12 @@ section component returns it early in place of its normal body. Used by
   description, artwork, tags and a short "on the way" line. Put images in
   `public/` and reference them as `asset('name.jpg')` (`src/lib/asset.js`),
   never as a root-absolute `/name.jpg` — that breaks under a subpath deploy.
-- **Oblique-wing poster DOI** — `doi` is `null` on that entry in `posters`; the
-  DOI line is hidden on both the card and the sub-page until it's filled.
-- **References** — the Research Supervisor entry has no `name` and is skipped
-  entirely; Course Instructor and Club Advisor have no `email` and simply omit
-  that line. Fill the fields in `references` and each appears on its own.
-- GRE / IELTS scores are placeholders (`000` / `0.0`) in `testScores`.
+- **ICC submission abstract** — the RIS range-resolution paper is listed with
+  `abstract: ''` and no DOI, so it renders as a title and a Submitted badge
+  with no abstract sub-page. Fill `abstract` once the paper is public.
+- **Club Advisor email** — `email` is `null` on that entry in `references`, so
+  the line is simply omitted. An entry with no `name` is skipped entirely.
+- GRE / IELTS scores are placeholders (`000` / `0.0`) in `testScores` — they
+  are placeholders in the master resume too, so there is nothing to copy yet.
 - ORCID and ResearchGate glyphs in `Icons.jsx` are drawn by hand to match the
   stroke weight of the rail; swap in the official marks if you prefer them.
