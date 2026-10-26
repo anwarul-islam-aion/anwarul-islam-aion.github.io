@@ -6,8 +6,6 @@ A fixed-viewport card app: the left third holds identity and the section index,
 the right two-thirds is a single card that swings open like a book leaf when you
 pick a section and scrolls inside itself. The page never scrolls on desktop.
 
-Interaction modelled on [aliulhassanolee.engineer](https://aliulhassanolee.engineer),
-typography and list treatment on [brittanychiang.com](https://brittanychiang.com).
 
 ## Running it
 
