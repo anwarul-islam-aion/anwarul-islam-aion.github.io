@@ -28,7 +28,9 @@ export default function SubPage({ eyebrow, title, children, footer, onBack }) {
         </p>
       )}
 
-      <h3 className="mt-2 text-xl font-semibold leading-snug text-ink">{title}</h3>
+      {/* Both are optional: the About story runs straight from the Back control
+          into the prose, with no heading of its own. */}
+      {title && <h3 className="mt-2 text-xl font-semibold leading-snug text-ink">{title}</h3>}
 
       <div className="mt-5 border-t border-divider pt-6">{children}</div>
 

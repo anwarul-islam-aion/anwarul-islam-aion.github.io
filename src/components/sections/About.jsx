@@ -58,7 +58,7 @@ export default function About() {
 
   if (showStory) {
     return (
-      <SubPage title="Engineering with Purpose" eyebrow= "A 5-minute read" onBack={() => setShowStory(false)}>
+      <SubPage onBack={() => setShowStory(false)}>
         <FullStory />
       </SubPage>
     );
