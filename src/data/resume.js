@@ -56,6 +56,18 @@ export const profile = {
   ],
 };
 
+/** Bulleted under "Research Interest" on the About card. */
+export const researchInterests = [
+  'Radar signal processing — Pulse-Doppler radar built end to end, MTI and CFAR detection',
+  'Wireless communication and antenna design',
+  'Integrated sensing and communication (ISAC), where radar and communication combine',
+  "5G downlink sensing — sensing from a base station's own transmitted signal, and how much sensing quality survives the scheduler",
+  'Reconfigurable intelligent surfaces, and bringing RIS and ISAC together for future wireless communication',
+  '5G C-band interference detection and mitigation for FMCW radar altimeters on SDR',
+  'Factor-graph SLAM for GNSS-denied navigation with computer vision',
+  'Microwave brain imaging with Vivaldi antennas',
+];
+
 /**
  * `accent` gives each card its own identity — it drives the rule under the
  * heading, that card's meta labels, and the nav indicator. All eight are deep,

@@ -1,11 +1,7 @@
 import { useState } from 'react';
-import { InlineLink, Subheading, MoreButton } from '../ui';
+import { researchInterests } from '../../data/resume';
+import { InlineLink, Subheading, MoreButton, MarkerList } from '../ui';
 import SubPage from '../SubPage';
-
-/** Emphasised term inside the research prose — same weight as elsewhere on the card. */
-function Term({ children }) {
-  return <span className="font-medium text-ink">{children}</span>;
-}
 
 /** The long version, kept off the front of the card so Research sits high. */
 function FullStory() {
@@ -84,29 +80,18 @@ export default function About() {
         <Subheading>Research Focus</Subheading>
 
         <p className="text-justify text-lg hyphens-auto">
-          How far can a single waveform be pushed to sense and to communicate at once? My thesis
-          puts a <span className="font-medium text-ink">reconfigurable intelligent surface</span> in
-          the path of a dual-function radar link and evaluates the sensing–communication trade-off
-          in simulation, while the radar lab keeps it honest in hardware.
+          My thesis takes RIS-assisted integrated sensing and communication in two parts — the
+          range-resolution limit of a{' '}
+          <span className="font-medium text-ink">reconfigurable intelligent surface</span>, tested
+          against full-wave simulation and hardware, and how much sensing quality survives the 5G
+          scheduler.
         </p>
       </div>
 
       <div className="mt-7">
         <Subheading>Research Interest</Subheading>
 
-        <p className="text-justify text-lg hyphens-auto">
-          Expertise in <Term>radar signal processing</Term>, from building a Pulse-Doppler radar end
-          to end. As well as a strong interest in <Term>wireless communication</Term> and antenna
-          design. <Term>Integrated sensing and communication (ISAC)</Term> is where these two
-          combine and that is the motivation. Now working on how a 5G base station's own transmitted
-          signal can be used to sense from its downlink. This is a radar problem inside a
-          communication system. The open question is how much sensing quality survives the
-          scheduler. Also working on <Term>reconfigurable intelligent surfaces</Term> and planning
-          to bring the two together for future wireless communication. Also worked on{' '}
-          <Term>5G C-band interference detection and mitigation for FMCW Radar Altimeters</Term> on
-          SDR, factor-graph SLAM for GNSS-denied navigation with computer vision and microwave brain
-          imaging with Vivaldi antennas.
-        </p>
+        <MarkerList items={researchInterests} />
       </div>
     </div>
   );
