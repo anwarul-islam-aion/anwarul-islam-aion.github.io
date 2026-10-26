@@ -14,9 +14,6 @@ export const profile = {
   photo: asset('profile.png'),
   resumeUrl: asset('resume.pdf'),
   resumeFileName: 'Md-Anwarul-Islam-Aion-Resume.pdf',
-  /** The two-page academic CV — research-facing, distinct from the resume. */
-  cvUrl: asset('cv.pdf'),
-  cvFileName: 'Md-Anwarul-Islam-Aion-Academic-CV.pdf',
   email: 'aion.aaub@gmail.com',
   phone: '+8801717617918',
   website: 'https://anwarulislamaion.engineer',

@@ -131,11 +131,7 @@ export default function Education() {
         ))}
       </dl>
 
-      {/* Two documents: the four-page resume and the shorter academic CV. */}
-      <div className="flex flex-wrap gap-3">
-        <ActionLink href={profile.resumeUrl}>Download Full Résumé (PDF)</ActionLink>
-        <ActionLink href={profile.cvUrl}>Download Academic CV (PDF)</ActionLink>
-      </div>
+      <ActionLink href={profile.resumeUrl}>Download Full Résumé (PDF)</ActionLink>
     </div>
   );
 }
