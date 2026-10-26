@@ -22,7 +22,12 @@ export const profile = {
    * too pale to clear 3:1 against the sand ground (ORCID green, RG teal).
    */
   socials: [
-    { name: 'GitHub', icon: 'github', url: 'https://github.com/aionndc22', color: '#24292f' },
+    {
+      name: 'GitHub',
+      icon: 'github',
+      url: 'https://github.com/anwarul-islam-aion',
+      color: '#24292f',
+    },
     {
       name: 'LinkedIn',
       icon: 'linkedin',
@@ -505,21 +510,6 @@ export const references = [
     role: 'Assistant Professor',
     org: 'Aviation and Aerospace University, Bangladesh',
     email: 'samin@aaub.edu.bd',
-  },
-  {
-    relation: 'Club Advisor',
-    name: 'Tanvir Ahmed Sowrov',
-    role: 'Moderator, AAUB Debating Club',
-    org: 'Aviation and Aerospace University, Bangladesh',
-    /* [TODO] email */
-    email: null,
-  },
-  {
-    relation: 'Professional Reference',
-    name: 'Md. Aminul Islam Nahid',
-    role: 'Manager, HR & Recruitment',
-    org: 'Mhadi Support Services Ltd',
-    email: 'nahid@mhadi.ltd',
   },
 ];
 

@@ -141,8 +141,6 @@ section component returns it early in place of its normal body. Used by
 - **ICC submission abstract** — the RIS range-resolution paper is listed with
   `abstract: ''` and no DOI, so it renders as a title and a Submitted badge
   with no abstract sub-page. Fill `abstract` once the paper is public.
-- **Club Advisor email** — `email` is `null` on that entry in `references`, so
-  the line is simply omitted. An entry with no `name` is skipped entirely.
 - GRE / IELTS scores are placeholders (`000` / `0.0`) in `testScores` — they
   are placeholders in the master resume too, so there is nothing to copy yet.
 - ORCID and ResearchGate glyphs in `Icons.jsx` are drawn by hand to match the
