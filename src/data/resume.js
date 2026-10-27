@@ -154,14 +154,18 @@ export const research = [
   {
     date: '2026 to 2027',
     roles: [{ title: 'Undergraduate Thesis', period: '2026 to 2027' }],
-    org: 'RIS-assisted Integrated Sensing and Communication',
+    org: 'Integrated Sensing and Communication (ISAC)',
     orgUrl: null,
     location: 'Aviation and Aerospace University, Bangladesh',
     supervisor: 'Air Cdre Dr. Mohammad Akhter Jamil, Dean',
     hours: null,
+    /* Deliberately general about the in-progress work. The contribution is an
+       unpublished result, and naming the mechanism here would give it away
+       before the paper lands. The ICC submission is named because it is
+       already submitted, so its title is public. */
     description:
-      'Cellular ISAC: getting a 5G base station to sense what is around it from its own downlink, without giving up the data it carries. One subsystem derives the range-resolution limit a reconfigurable intelligent surface imposes, as an element-bandwidth criterion, and tests it against CST full-wave simulation and hardware measurement. The other measures, in simulation, how much sensing quality survives as scheduler load changes.',
-    tags: ['Cellular ISAC', '5G NR', 'RIS', 'CST', 'Range Resolution'],
+      "Cellular ISAC: using a 5G base station's own downlink to sense its surroundings while it keeps carrying data for users. The work examines how sensing quality holds up under realistic network load, and how reconfigurable intelligent surfaces can shape propagation to support it. One paper, “Range-Resolution Limits of RIS-Assisted Radar: An Element-Bandwidth Criterion and Its Full-Wave Test”, is submitted to IEEE ICC 2027 (SAC: Integrated Sensing and Communication).",
+    tags: ['Cellular ISAC', '5G NR', 'RIS', 'Radar Sensing'],
     journey: [],
     gallery: [],
   },
@@ -236,19 +240,48 @@ export const internships = [
 ];
 
 export const projects = [
+  /* The radar had a card here as well as the Job Experience entry above, and
+     the thesis had one as well as its Research Experience entry. Each said the
+     same thing twice on one page, so both cards went and the entries stayed.
+     What is left is the work that has no entry of its own: the three running
+     research projects first, then the built and published ones.
+
+     The running three are described by what question they ask, not by what the
+     answer is turning out to be. Each has a paper ahead of it, and the result
+     is the thing worth keeping back. */
   {
-    art: 'radar',
-    title: 'Pulse-Doppler Radar Signal Chain',
+    art: 'slam',
+    title: 'GNSS-Denied Navigation from Landmarks',
     url: null,
     description:
-      'A hardware-oriented radar the team is building the whole way down: I/Q demodulation, pulse compression, moving-target indication and CFAR detection, wired to a real-time acquisition path that streams over UDP into a legacy scope display. Written for an eventual FPGA port.',
-    tags: ['MATLAB', 'Simulink', 'CFAR', 'DAQ'],
-    meta: 'AAUB Radar Project',
+      'A vehicle repeats a route it was taught, with no satellite positioning, fixing its position against roadside landmarks surveyed in advance. The work looks at what an estimator should and should not try to infer about a landmark it can barely observe, and at how much positioning information each choice keeps. It is tested in simulation and against a real road corridor from an open autonomous-driving dataset.',
+    tags: ['Factor-Graph SLAM', 'GTSAM', 'Computer Vision', 'Teach and Repeat'],
+    meta: 'Journal of Field Robotics · Under review',
     journey: [],
     gallery: [],
   },
-  /* The thesis had a card here as well as its Research Experience entry, which
-     said the same thing twice on one page. The entry is the one that stays. */
+  {
+    art: 'vivaldi',
+    title: 'Microwave Brain Imaging',
+    url: null,
+    description:
+      'Looking for bleeding deep inside the head with microwaves instead of a scanner, using a ring of wideband Vivaldi antennas around the skull. The work covers the antenna design and a full-wave simulation pipeline that builds and solves anatomical head models automatically, so candidate arrays can be compared against each other before any hardware is cut.',
+    tags: ['Vivaldi Antenna', 'CST Studio Suite', 'Medical Imaging', 'Full-Wave Simulation'],
+    meta: 'Early-stage research',
+    journey: [],
+    gallery: [],
+  },
+  {
+    art: 'altimeter',
+    title: 'Radar Altimeter Interference Testbed',
+    url: null,
+    description:
+      'The 5G C-band sits next to the band aircraft radar altimeters use, and what that does to an altimeter on approach is a safety question. This builds a low-cost software-defined FMCW altimeter and an interference testbed on an ADALM-Pluto, so detection and mitigation can be tried on real hardware against real captured signals rather than in simulation alone.',
+    tags: ['FMCW Radar', 'ADALM-Pluto', 'SDR', '5G C-Band', 'Avionics Safety'],
+    meta: 'Avionics research',
+    journey: [],
+    gallery: [],
+  },
   {
     art: 'cansat',
     title: 'Resilient Power Systems for CanSat-Class Satellites',

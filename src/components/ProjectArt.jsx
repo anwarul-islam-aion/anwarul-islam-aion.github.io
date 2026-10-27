@@ -112,9 +112,89 @@ function ObliqueWing() {
   );
 }
 
+/** Ring of flared tapers around a head, with two paths crossing through it. */
+function Vivaldi() {
+  return (
+    <svg {...frame}>
+      <ellipse cx="100" cy="60" rx="29" ry="35" opacity="0.5" />
+      <ellipse cx="100" cy="60" rx="21" ry="26" opacity="0.26" />
+      <circle cx="109" cy="51" r="4" fill="currentColor" stroke="none" opacity="0.5" />
+
+      {[0, 45, 90, 135, 180, 225, 270, 315].map((deg) => (
+        <g key={deg} transform={`rotate(${deg} 100 60)`} opacity="0.72">
+          <path d="M150 60 l10 -7 M150 60 l10 7 M150 60 h-6" />
+        </g>
+      ))}
+
+      <path d="M66 40 L134 78" opacity="0.3" strokeDasharray="3 4" />
+      <path d="M66 80 L134 42" opacity="0.3" strokeDasharray="3 4" />
+    </svg>
+  );
+}
+
+/** A taught corridor, surveyed poles, and the lateral fixes taken off them. */
+function Slam() {
+  return (
+    <svg {...frame}>
+      <path d="M14 88 H186" opacity="0.32" />
+      <path d="M14 32 H186" opacity="0.18" />
+      <path d="M14 62 H186" opacity="0.3" strokeDasharray="6 5" />
+
+      {[44, 78, 122, 156].map((x) => (
+        <g key={x}>
+          <path d={`M${x} 46 V28`} opacity="0.7" />
+          <circle cx={x} cy="25" r="2.4" fill="currentColor" stroke="none" opacity="0.8" />
+        </g>
+      ))}
+
+      <path d="M96 56 L78 34" opacity="0.45" strokeDasharray="3 4" />
+      <path d="M104 56 L122 34" opacity="0.45" strokeDasharray="3 4" />
+
+      <rect x="86" y="54" width="24" height="13" rx="2.5" />
+      <circle cx="93" cy="69" r="2.6" opacity="0.8" />
+      <circle cx="103" cy="69" r="2.6" opacity="0.8" />
+    </svg>
+  );
+}
+
+/** An altimeter beam to the ground, with a cellular tower radiating across it. */
+function Altimeter() {
+  return (
+    <svg {...frame}>
+      <path d="M12 100 H188" opacity="0.35" />
+
+      {/* aircraft */}
+      <path d="M58 28 h26 l10 7 h-46 z" opacity="0.8" />
+      <path d="M52 32 h40" opacity="0.4" />
+      <path d="M66 28 l5 -8 h5 l-2 8" opacity="0.55" />
+
+      {/* altimeter beam to the ground */}
+      <path
+        d="M64 35 L50 100 L94 100 L82 35 Z"
+        fill="currentColor"
+        opacity="0.07"
+        stroke="none"
+      />
+      <path d="M64 35 L50 100 M82 35 L94 100" opacity="0.45" />
+
+      {/* the FMCW ramp it transmits */}
+      <path d="M16 74 l9 -13 v13 l9 -13 v13" opacity="0.5" strokeWidth="1.1" />
+
+      {/* C-band tower, radiating into the beam */}
+      <path d="M152 100 V58 M146 100 h12" opacity="0.7" />
+      <path d="m152 58 -5 7 M152 58 l5 7" opacity="0.55" />
+      <path d="M140 52 A 17 17 0 0 0 140 72" opacity="0.5" />
+      <path d="M133 47 A 25 25 0 0 0 133 77" opacity="0.3" />
+    </svg>
+  );
+}
+
 const registry = {
   radar: Radar,
   isac: Isac,
+  vivaldi: Vivaldi,
+  slam: Slam,
+  altimeter: Altimeter,
   cansat: CanSat,
   rover: Rover,
   obliquewing: ObliqueWing,
