@@ -98,17 +98,29 @@ export function MoreButton({ children, onClick, className = '' }) {
 }
 
 /** Square-marker list, used by the in-card sub-pages. */
+/**
+ * An item is either a plain string, as the coursework groups pass, or
+ * `{ term, detail }`, which sets the term in ink before its description. The
+ * research interests use the second form so each line names its field first.
+ */
 export function MarkerList({ items }) {
   return (
     <ul className="mt-2.5 space-y-1.5 text-base">
-      {items.map((item) => (
-        <li
-          key={item}
-          className="relative pl-5 before:absolute before:left-0 before:top-[0.62em] before:h-1.5 before:w-1.5 before:bg-[color:var(--section-accent)] before:content-['']"
-        >
-          {item}
-        </li>
-      ))}
+      {items.map((item) => {
+        const term = typeof item === 'string' ? null : item.term;
+        const detail = typeof item === 'string' ? item : item.detail;
+
+        return (
+          <li
+            key={term ?? detail}
+            className="relative pl-5 before:absolute before:left-0 before:top-[0.62em] before:h-1.5 before:w-1.5 before:bg-[color:var(--section-accent)] before:content-['']"
+          >
+            {term && <strong className="font-semibold text-ink">{term}:</strong>}
+            {term ? ' ' : null}
+            {detail}
+          </li>
+        );
+      })}
     </ul>
   );
 }

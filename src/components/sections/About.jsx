@@ -117,11 +117,17 @@ export default function About() {
         <Subheading>Research Focus</Subheading>
 
         <p className="text-justify text-lg hyphens-auto">
-          My thesis is on <span className="font-medium text-ink">cellular ISAC</span>, which means
-          letting a mobile network sense as well as communicate. It comes in two parts. One is a
-          reconfigurable intelligent surface that reshapes the signal path, tested against full-wave
-          simulation and a real panel. The other is how much sensing quality survives once the
-          network is busy with real users.
+          My research focuses on the intersection of radar signal processing and wireless
+          communication. My thesis explores{' '}
+          <span className="font-medium text-ink">
+            cellular Integrated Sensing and Communication (ISAC)
+          </span>
+          , investigating how a 5G base station can use its own downlink transmissions to sense its
+          surroundings. A central question is how much sensing performance can be preserved when
+          network resources are scheduled to serve multiple users. I am also exploring
+          Reconfigurable Intelligent Surfaces (RIS) to control signal propagation and investigating
+          how RIS-assisted sensing can be integrated with cellular ISAC for future wireless
+          networks.
         </p>
       </div>
 

@@ -67,16 +67,42 @@ export const profile = {
   ],
 };
 
-/** Bulleted under "Research Interest" on the About card. */
+/**
+ * Bulleted under "Research Interest" on the About card. Each entry names its
+ * field before describing it, so the list can be scanned by topic.
+ */
 export const researchInterests = [
-  'Radar signal processing. A Pulse-Doppler radar built end to end, with MTI and CFAR detection',
-  'Wireless communication and antenna design',
-  'Integrated sensing and communication (ISAC), where radar and communication combine',
-  "5G downlink sensing. A base station senses from its own transmitted signal. The question is how much sensing quality survives the scheduler",
-  'Reconfigurable intelligent surfaces, and bringing RIS and ISAC together for future wireless communication',
-  '5G C-band interference detection and mitigation for FMCW radar altimeters on SDR',
-  'Factor-graph SLAM for GNSS-denied navigation with computer vision',
-  'Microwave brain imaging with Vivaldi antennas',
+  {
+    term: 'Radar Signal Processing',
+    detail:
+      'End-to-end Pulse-Doppler radar development with I/Q processing, MTI and CFAR detection.',
+  },
+  {
+    term: 'Wireless Communication and Antenna Design',
+    detail: 'Signal propagation, wireless system design and antenna engineering.',
+  },
+  {
+    term: 'Integrated Sensing and Communication (ISAC)',
+    detail: 'Downlink sensing, joint sensing and communication, network resource scheduling.',
+  },
+  {
+    term: 'Reconfigurable Intelligent Surfaces (RIS)',
+    detail: 'Intelligent propagation control and RIS-assisted sensing for future wireless networks.',
+  },
+  {
+    term: 'Radar Altimeter Interference Mitigation',
+    detail:
+      'SDR-based detection and mitigation of 5G C-band interference in FMCW radar altimeters.',
+  },
+  {
+    term: 'GNSS-Denied Navigation',
+    detail:
+      'Factor-graph SLAM integrating computer vision for navigation without satellite positioning.',
+  },
+  {
+    term: 'Microwave Imaging',
+    detail: 'Brain imaging techniques using Vivaldi antennas.',
+  },
 ];
 
 /**
