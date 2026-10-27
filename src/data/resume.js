@@ -169,6 +169,48 @@ export const research = [
     journey: [],
     gallery: [],
   },
+  {
+    date: '2026',
+    roles: [{ title: 'Independent Research' }],
+    org: 'GNSS-Denied Navigation from Landmarks',
+    orgUrl: null,
+    location: 'Under review, Journal of Field Robotics',
+    supervisor: null,
+    hours: null,
+    description:
+      'A vehicle repeats a route it was taught, with no satellite positioning, fixing its position against roadside landmarks surveyed in advance. The work looks at what an estimator should and should not try to infer about a landmark it can barely observe, and at how much positioning information each choice keeps. It is tested in simulation and against a real road corridor from an open autonomous-driving dataset.',
+    tags: ['Factor-Graph SLAM', 'GTSAM', 'Computer Vision', 'Teach and Repeat'],
+    journey: [],
+    gallery: [],
+  },
+  {
+    date: '2026 to Present',
+    roles: [{ title: 'Independent Research' }],
+    org: 'Microwave Brain Imaging',
+    orgUrl: null,
+    location: 'Early-stage',
+    supervisor: null,
+    hours: null,
+    description:
+      'Looking for bleeding deep inside the head with microwaves instead of a scanner, using a ring of wideband Vivaldi antennas around the skull. The work covers the antenna design and a full-wave simulation pipeline that builds and solves anatomical head models automatically, so candidate arrays can be compared against each other before any hardware is cut.',
+    tags: ['Vivaldi Antenna', 'CST Studio Suite', 'Medical Imaging', 'Full-Wave Simulation'],
+    journey: [],
+    gallery: [],
+  },
+  {
+    date: '2026 to Present',
+    roles: [{ title: 'Avionics Research' }],
+    org: 'Radar Altimeter Interference Testbed',
+    orgUrl: null,
+    location: null,
+    supervisor: null,
+    hours: null,
+    description:
+      'The 5G C-band sits next to the band aircraft radar altimeters use, and what that does to an altimeter on approach is a safety question. This builds a low-cost software-defined FMCW altimeter and an interference testbed on an ADALM-Pluto, so detection and mitigation can be tried on real hardware against real captured signals rather than in simulation alone.',
+    tags: ['FMCW Radar', 'ADALM-Pluto', 'SDR', '5G C-Band', 'Avionics Safety'],
+    journey: [],
+    gallery: [],
+  },
 ];
 
 /** Competition team roles — unpaid, and read as projects rather than posts. */
@@ -240,48 +282,9 @@ export const internships = [
 ];
 
 export const projects = [
-  /* The radar had a card here as well as the Job Experience entry above, and
-     the thesis had one as well as its Research Experience entry. Each said the
-     same thing twice on one page, so both cards went and the entries stayed.
-     What is left is the work that has no entry of its own: the three running
-     research projects first, then the built and published ones.
-
-     The running three are described by what question they ask, not by what the
-     answer is turning out to be. Each has a paper ahead of it, and the result
-     is the thing worth keeping back. */
-  {
-    art: 'slam',
-    title: 'GNSS-Denied Navigation from Landmarks',
-    url: null,
-    description:
-      'A vehicle repeats a route it was taught, with no satellite positioning, fixing its position against roadside landmarks surveyed in advance. The work looks at what an estimator should and should not try to infer about a landmark it can barely observe, and at how much positioning information each choice keeps. It is tested in simulation and against a real road corridor from an open autonomous-driving dataset.',
-    tags: ['Factor-Graph SLAM', 'GTSAM', 'Computer Vision', 'Teach and Repeat'],
-    meta: 'Journal of Field Robotics · Under review',
-    journey: [],
-    gallery: [],
-  },
-  {
-    art: 'vivaldi',
-    title: 'Microwave Brain Imaging',
-    url: null,
-    description:
-      'Looking for bleeding deep inside the head with microwaves instead of a scanner, using a ring of wideband Vivaldi antennas around the skull. The work covers the antenna design and a full-wave simulation pipeline that builds and solves anatomical head models automatically, so candidate arrays can be compared against each other before any hardware is cut.',
-    tags: ['Vivaldi Antenna', 'CST Studio Suite', 'Medical Imaging', 'Full-Wave Simulation'],
-    meta: 'Early-stage research',
-    journey: [],
-    gallery: [],
-  },
-  {
-    art: 'altimeter',
-    title: 'Radar Altimeter Interference Testbed',
-    url: null,
-    description:
-      'The 5G C-band sits next to the band aircraft radar altimeters use, and what that does to an altimeter on approach is a safety question. This builds a low-cost software-defined FMCW altimeter and an interference testbed on an ADALM-Pluto, so detection and mitigation can be tried on real hardware against real captured signals rather than in simulation alone.',
-    tags: ['FMCW Radar', 'ADALM-Pluto', 'SDR', '5G C-Band', 'Avionics Safety'],
-    meta: 'Avionics research',
-    journey: [],
-    gallery: [],
-  },
+  /* Research lives in `research` above, not here: the radar, the thesis and the
+     three running studies each had a card as well as an entry, which said the
+     same thing twice on one page. This section is the built work. */
   {
     art: 'cansat',
     title: 'Resilient Power Systems for CanSat-Class Satellites',
