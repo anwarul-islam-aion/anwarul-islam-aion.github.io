@@ -171,7 +171,7 @@ export const research = [
   },
   {
     date: '2026',
-    roles: [{ title: 'Independent Research' }],
+    roles: [],
     org: 'GNSS-Denied Navigation from Landmarks',
     orgUrl: null,
     location: 'Under review, Journal of Field Robotics',
@@ -185,7 +185,7 @@ export const research = [
   },
   {
     date: '2026 to Present',
-    roles: [{ title: 'Independent Research' }],
+    roles: [],
     org: 'Microwave Brain Imaging',
     orgUrl: null,
     location: 'Early-stage',
@@ -199,7 +199,7 @@ export const research = [
   },
   {
     date: '2026 to Present',
-    roles: [{ title: 'Avionics Research' }],
+    roles: [],
     org: 'Radar Altimeter Interference Testbed',
     orgUrl: null,
     location: null,

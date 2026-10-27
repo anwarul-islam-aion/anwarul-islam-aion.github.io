@@ -103,7 +103,10 @@ function RoleList({ items, onOpen }) {
                 <MoreButton onClick={() => onOpen(asDetail(job, 'job'))}>Read More</MoreButton>
               </p>
 
-              <TagLine items={job.tags} />
+              {/* Phone: the list stays readable, the tags wait in Read More. */}
+              <div className="hidden sm:block">
+                <TagLine items={job.tags} />
+              </div>
             </div>
           </Card>
         </li>
@@ -220,7 +223,9 @@ export default function Experience() {
                   </MoreButton>
                 </p>
 
-                <TagLine items={project.tags} label="Topics" />
+                <div className="hidden sm:block">
+                  <TagLine items={project.tags} label="Topics" />
+                </div>
               </div>
 
               <div className="z-10 sm:order-1 sm:col-span-2">

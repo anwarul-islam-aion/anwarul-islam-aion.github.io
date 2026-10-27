@@ -1,5 +1,6 @@
 import { useLayoutEffect, useState } from 'react';
 import usePrefersReducedMotion from '../hooks/usePrefersReducedMotion';
+import { BaseStation, RisPanel } from './BeamField';
 
 /**
  * Craft in the page margins: two drones crossing the top gutter in opposite
@@ -127,9 +128,13 @@ export default function Fleet() {
 
   useLayoutEffect(() => {
     if (reduced) return undefined;
-    if (!globalThis.matchMedia?.('(min-width: 64rem)').matches) return undefined;
 
-    const place = () => setVp({ w: window.innerWidth, h: window.innerHeight });
+    const place = () =>
+      setVp({
+        w: window.innerWidth,
+        h: window.innerHeight,
+        wide: globalThis.matchMedia?.('(min-width: 64rem)').matches ?? true,
+      });
     place();
     window.addEventListener('resize', place);
     return () => window.removeEventListener('resize', place);
@@ -137,7 +142,55 @@ export default function Fleet() {
 
   if (reduced || !vp) return null;
 
-  const { w, h } = vp;
+  const { w, h, wide } = vp;
+
+  /* Phone: there are no gutters to fly in, so the craft drift across the page
+     itself. Held at 0.16 opacity and behind the fixed nav, which is why they
+     read as weather over the card rather than as something to look at. */
+  if (!wide) {
+    const drones = [
+      { y: h * 0.17, from: -40, travel: w + 90, dur: '31s', delay: '0s', bob: '9px' },
+      { y: h * 0.46, from: w + 40, travel: -(w + 90), dur: '38s', delay: '-16s', bob: '12px' },
+      { y: h * 0.74, from: -40, travel: w + 90, dur: '44s', delay: '-27s', bob: '7px' },
+    ];
+
+    // No `craft-layer` class here: its fade-in animates opacity to 1, and an
+    // animation outranks an inline style, so the craft would flash at full
+    // strength on load before settling back to 0.16.
+    return (
+      <svg
+        className="pointer-events-none fixed inset-0 z-20"
+        style={{ opacity: 0.16 }}
+        width={w}
+        height={h}
+        viewBox={`0 0 ${w} ${h}`}
+        fill="none"
+        aria-hidden="true"
+      >
+        {drones.map((d) => (
+          <g
+            key={d.y}
+            className="craft-cross"
+            style={{ '--travel': `${d.travel}px`, animationDuration: d.dur, animationDelay: d.delay }}
+          >
+            <g className="craft-bob" style={{ '--bob': d.bob, animationDuration: '4.3s' }}>
+              <g transform={`translate(${d.from} ${d.y})`}>
+                <Drone />
+              </g>
+            </g>
+          </g>
+        ))}
+
+        {/* Clear of the fixed nav at the top and the buttons at the bottom. */}
+        <g transform={`translate(${w - 36} 124) rotate(-16) skewY(-9) scale(0.6)`}>
+          <RisPanel />
+        </g>
+        <g transform={`translate(34 ${h - 34}) scale(0.78)`}>
+          <BaseStation />
+        </g>
+      </svg>
+    );
+  }
 
   // Stop short of the RIS instead of crossing it.
   const topTravel = Math.max(w - 150, 240);

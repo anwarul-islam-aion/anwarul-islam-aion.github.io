@@ -61,7 +61,7 @@ export function DefinitionRow({ term, children }) {
   return (
     <div className="grid gap-1 border-b border-divider py-3 last:border-b-0 sm:grid-cols-12 sm:gap-6">
       <dt className="text-base font-semibold text-ink sm:col-span-4">{term}</dt>
-      <dd className="text-base leading-relaxed text-ink-soft sm:col-span-8 sm:text-right">
+      <dd className="text-base leading-relaxed text-ink-soft text-right sm:col-span-8">
         {children}
       </dd>
     </div>

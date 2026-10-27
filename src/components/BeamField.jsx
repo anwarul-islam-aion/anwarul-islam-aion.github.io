@@ -46,8 +46,8 @@ const centreOf = (key) => {
   return { key, x: r.left + r.width / 2, y: r.top + r.height / 2 };
 };
 
-/** Lattice mast with radiating arcs — the transmitter. */
-function BaseStation() {
+/** Lattice mast with radiating arcs — the transmitter. Also used by <Fleet />. */
+export function BaseStation() {
   return (
     <g stroke="var(--color-navy)" fill="none" strokeLinecap="round" strokeLinejoin="round">
       <g strokeWidth="2">
@@ -72,8 +72,8 @@ function BaseStation() {
   );
 }
 
-/** Tilted panel of unit cells — the reflecting surface. */
-function RisPanel() {
+/** Tilted panel of unit cells — the reflecting surface. Also used by <Fleet />. */
+export function RisPanel() {
   const cells = [];
   for (let row = 0; row < 5; row += 1) {
     for (let col = 0; col < 4; col += 1) {
