@@ -416,7 +416,7 @@ export const education = [
          the site is public, so this line carries the CGPA only. */
       'CGPA 3.62 / 4.00 (through 6th semester)',
     detail:
-      'Thesis: RIS-assisted Integrated Sensing and Communication. This is cellular ISAC, in two subsystems. The first derives the range-resolution limit of a reconfigurable intelligent surface as an element-bandwidth criterion, and tests it against CST full-wave simulation and hardware measurement. The second is 5G downlink sensing. It measures in simulation how sensing degrades as scheduler load changes.',
+      'Thesis: Integrated Sensing and Communication (ISAC). Investigates 5G downlink sensing under varying network loads and RIS-assisted radar range-resolution limits. One paper on “Range-Resolution Limits of RIS-Assisted Radar: An Element-Bandwidth Criterion and Its Full-Wave Test” submitted to IEEE ICC 2027 (SAC: Integrated Sensing and Communication).',
     curriculumUrl: asset('avionics-curriculum.pdf'),
     curriculumFileName: 'AAUB-Avionics-Engineering-Curriculum-OBE.pdf',
     /* The curriculum document predates both renamings, so it carries the old
