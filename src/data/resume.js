@@ -137,7 +137,7 @@ export const jobs = [
     supervisor: 'Air Cdre Dr. Mohammad Akhter Jamil, Dean',
     hours: '20 hrs/week',
     description:
-      "Appointed by special exception as the first undergraduate in the university's history to hold a paid research assistantship. Building a Pulse-Doppler radar end to end. The work covers I/Q processing, MTI and CFAR detection, real-time acquisition over UDP and integration with a legacy radar display. The target is an FPGA-compatible build.",
+      "Appointed by special exception as the first undergraduate in the university's history to hold a paid research assistantship. I work in the team building a Pulse-Doppler radar end to end. The work covers I/Q processing, MTI and CFAR detection, real-time acquisition over UDP and integration with a legacy radar display. The target is an FPGA-compatible build.",
     tags: ['MATLAB', 'Simulink', 'DSP', 'MTI', 'CFAR', 'UDP', 'FPGA'],
     journey: [],
     gallery: [],
@@ -241,23 +241,14 @@ export const projects = [
     title: 'Pulse-Doppler Radar Signal Chain',
     url: null,
     description:
-      'A hardware-oriented radar built the whole way down: I/Q demodulation, pulse compression, moving-target indication and CFAR detection, wired to a real-time acquisition path that streams over UDP into a legacy scope display. Written for an eventual FPGA port.',
+      'A hardware-oriented radar the team is building the whole way down: I/Q demodulation, pulse compression, moving-target indication and CFAR detection, wired to a real-time acquisition path that streams over UDP into a legacy scope display. Written for an eventual FPGA port.',
     tags: ['MATLAB', 'Simulink', 'CFAR', 'DAQ'],
     meta: 'AAUB Radar Project',
     journey: [],
     gallery: [],
   },
-  {
-    art: 'isac',
-    title: 'Cellular ISAC: Sensing from a 5G Network',
-    url: null,
-    description:
-      'Making a mobile network sense as well as communicate. A 5G base station already fills its cell with radio. The thesis asks how much it can learn about its surroundings from its own signal coming back, without giving up the data it exists to carry. It comes in two parts. One is a reconfigurable intelligent surface that reshapes the signal path, tested in full-wave simulation and against a real panel. The other is how much sensing quality survives once the scheduler is busy with real users. This is the direction I plan to carry into doctoral research.',
-    tags: ['Cellular ISAC', '5G NR', 'RIS', 'Radar Sensing'],
-    meta: 'Undergraduate Thesis',
-    journey: [],
-    gallery: [],
-  },
+  /* The thesis had a card here as well as its Research Experience entry, which
+     said the same thing twice on one page. The entry is the one that stays. */
   {
     art: 'cansat',
     title: 'Resilient Power Systems for CanSat-Class Satellites',
