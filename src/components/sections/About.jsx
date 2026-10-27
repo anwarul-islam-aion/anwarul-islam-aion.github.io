@@ -67,17 +67,29 @@ export default function About() {
   return (
     <div className="text-ink-soft">
       <p className="text-justify text-lg hyphens-auto">
-        Aviation is what pulled me into engineering. What kept me here is signal processing. It is
-        the part where a return echo stops being noise and starts being a target. I am an Avionics
-        Engineering undergraduate at{' '}
+        Aviation brought me into engineering and signal processing shaped my motivation. I am an
+        Avionics Engineering final year undergraduate at{' '}
         <InlineLink href="https://aaub.edu.bd">
           Aviation and Aerospace University, Bangladesh
         </InlineLink>
-        . I work on Pulse-Doppler radar and{' '}
-        <span className="font-medium text-ink">cellular integrated sensing and communication</span>,
-        which means getting a 5G network to sense what is around it while it carries data. Nearly
-        everything I build sits at the seam where radar theory has to survive contact with real
-        hardware.{' '}
+        .
+      </p>
+
+      <p className="mt-4 text-justify text-lg hyphens-auto">
+        Now I am working at the university's RADAR Research Lab as a Research Assistant, the{' '}
+        <span className="font-medium text-ink">
+          first undergraduate in the university's history
+        </span>{' '}
+        to receive a paid research assistantship by special exception. My work is on Pulse-Doppler
+        radar, wireless communication and{' '}
+        <span className="font-medium text-ink">
+          cellular integrated sensing and communication (ISAC)
+        </span>
+        . I also serve as Team Lead for the AAUB Satellite Project and President of the AAUB
+        Debating Club. Beyond the lab I have contributed to four research papers and been a global
+        finalist in the CanSat and Mars Rover competitions in the USA and Turkey. Outside
+        engineering and leadership I tutor students. For hobbies I enjoy travelling, watching
+        movies, stand-up comedy and, of course, debating.{' '}
         <MoreButton onClick={() => setShowStory(true)}>Read More</MoreButton>
       </p>
 
