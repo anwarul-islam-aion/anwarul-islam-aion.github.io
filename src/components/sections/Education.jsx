@@ -35,7 +35,7 @@ export default function Education() {
           <div>
             <h4 className="text-base font-semibold text-ink">Course Curriculum</h4>
 
-            <p className="mt-2 text-justify text-base leading-relaxed hyphens-auto text-ink-soft">
+            <p className="mt-2 text-justify text-base leading-relaxed text-ink-soft">
               {openEntry.namingNote}
             </p>
 
@@ -94,7 +94,7 @@ export default function Education() {
                 <p className="mt-2 font-mono text-sm text-navy">{entry.result}</p>
 
                 {entry.detail && (
-                  <p className="mt-2 text-justify text-base leading-normal hyphens-auto text-ink-soft">
+                  <p className="mt-2 text-justify text-base leading-normal text-ink-soft">
                     {entry.detail}
                   </p>
                 )}

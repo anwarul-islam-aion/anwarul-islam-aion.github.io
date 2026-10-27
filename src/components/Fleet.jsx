@@ -1,6 +1,5 @@
 import { useLayoutEffect, useState } from 'react';
 import usePrefersReducedMotion from '../hooks/usePrefersReducedMotion';
-import { BaseStation, RisPanel } from './BeamField';
 
 /**
  * Craft in the page margins: two drones crossing the top gutter in opposite
@@ -29,7 +28,7 @@ const ROVER_LIFT = 24; // rover height above the bottom edge
 function Drone() {
   return (
     <g
-      stroke="var(--color-navy)"
+      stroke="currentColor"
       fill="none"
       strokeLinecap="round"
       strokeLinejoin="round"
@@ -79,7 +78,7 @@ function Wheel({ cx, delay }) {
 function Rover() {
   return (
     <g
-      stroke="var(--color-navy)"
+      stroke="currentColor"
       fill="none"
       strokeLinecap="round"
       strokeLinejoin="round"
@@ -148,10 +147,12 @@ export default function Fleet() {
      itself. Held at 0.16 opacity and behind the fixed nav, which is why they
      read as weather over the card rather than as something to look at. */
   if (!wide) {
+    /* Keyed by id, not by y: before the viewport reports a height every y is
+       0 and React sees three children with the same key. */
     const drones = [
-      { y: h * 0.17, from: -40, travel: w + 90, dur: '31s', delay: '0s', bob: '9px' },
-      { y: h * 0.46, from: w + 40, travel: -(w + 90), dur: '38s', delay: '-16s', bob: '12px' },
-      { y: h * 0.74, from: -40, travel: w + 90, dur: '44s', delay: '-27s', bob: '7px' },
+      { id: 'hi', y: h * 0.17, from: -40, travel: w + 90, dur: '31s', delay: '0s', bob: '9px' },
+      { id: 'mid', y: h * 0.46, from: w + 40, travel: -(w + 90), dur: '38s', delay: '-16s', bob: '12px' },
+      { id: 'low', y: h * 0.74, from: -40, travel: w + 90, dur: '44s', delay: '-27s', bob: '7px' },
     ];
 
     // No `craft-layer` class here: its fade-in animates opacity to 1, and an
@@ -160,7 +161,7 @@ export default function Fleet() {
     return (
       <svg
         className="pointer-events-none fixed inset-0 z-20"
-        style={{ opacity: 0.16 }}
+        style={{ color: 'var(--section-accent)', opacity: 0.45 }}
         width={w}
         height={h}
         viewBox={`0 0 ${w} ${h}`}
@@ -169,7 +170,7 @@ export default function Fleet() {
       >
         {drones.map((d) => (
           <g
-            key={d.y}
+            key={d.id}
             className="craft-cross"
             style={{ '--travel': `${d.travel}px`, animationDuration: d.dur, animationDelay: d.delay }}
           >
@@ -181,13 +182,8 @@ export default function Fleet() {
           </g>
         ))}
 
-        {/* Clear of the fixed nav at the top and the buttons at the bottom. */}
-        <g transform={`translate(${w - 36} 124) rotate(-16) skewY(-9) scale(0.6)`}>
-          <RisPanel />
-        </g>
-        <g transform={`translate(34 ${h - 34}) scale(0.78)`}>
-          <BaseStation />
-        </g>
+        {/* The base station and the RIS are <BeamField />'s, at both widths, so
+            that the beam it fires starts and reflects at the same two points. */}
       </svg>
     );
   }
@@ -202,6 +198,7 @@ export default function Fleet() {
   return (
     <svg
       className="craft-layer pointer-events-none fixed inset-0 z-30"
+      style={{ color: 'var(--color-navy)' }}
       width={w}
       height={h}
       viewBox={`0 0 ${w} ${h}`}

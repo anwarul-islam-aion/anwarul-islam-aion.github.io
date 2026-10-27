@@ -31,7 +31,7 @@ export default function Publications() {
       >
         <h4 className="text-base font-semibold text-ink">Abstract</h4>
 
-        <p className="mt-2 text-justify text-base leading-relaxed hyphens-auto">{paper.abstract}</p>
+        <p className="mt-2 text-justify text-base leading-relaxed">{paper.abstract}</p>
 
         <p className="mt-4 font-mono text-sm text-ink-soft">DOI: {paper.doi}</p>
 
@@ -89,7 +89,7 @@ export default function Publications() {
       >
         <h4 className="text-base font-semibold text-ink">Abstract</h4>
 
-        <p className="mt-2 text-justify text-base leading-relaxed hyphens-auto">
+        <p className="mt-2 text-justify text-base leading-relaxed">
           {poster.abstract}
         </p>
 
@@ -176,7 +176,7 @@ export default function Publications() {
                   <p className="mt-1 font-mono text-sm text-ink-soft">DOI: {poster.doi}</p>
                 )}
 
-                <p className="mt-2 text-justify text-base leading-normal hyphens-auto text-ink-soft">
+                <p className="mt-2 text-justify text-base leading-normal text-ink-soft">
                   {poster.intro}{' '}
                   <MoreButton onClick={() => setDetail({ kind: 'poster', item: poster })}>
                     Read More

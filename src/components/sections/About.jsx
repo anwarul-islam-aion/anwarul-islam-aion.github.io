@@ -6,7 +6,7 @@ import SubPage from '../SubPage';
 /** The long version, kept off the front of the card so Research sits high. */
 function FullStory() {
   return (
-    <div className="space-y-4 text-justify text-base hyphens-auto sm:text-lg">
+    <div className="space-y-4 text-justify text-base sm:text-lg">
       <p>
         I am drawn to engineering problems where theory meets reality. I enjoy the challenge of
         turning mathematical models into working systems. This perspective has shaped my journey in
@@ -86,7 +86,7 @@ export default function About() {
 
   return (
     <div className="text-ink-soft">
-      <p className="text-justify text-base hyphens-auto sm:text-lg">
+      <p className="text-justify text-base sm:text-lg">
         Aviation brought me into engineering and signal processing shaped my motivation. I am an
         Avionics Engineering final year undergraduate at{' '}
         <InlineLink href="https://aaub.edu.bd">
@@ -95,7 +95,7 @@ export default function About() {
         .
       </p>
 
-      <p className="mt-4 text-justify text-base hyphens-auto sm:text-lg">
+      <p className="mt-4 text-justify text-base sm:text-lg">
         Now I am working at the university's RADAR Research Lab as a Research Assistant, the{' '}
         <span className="font-medium text-ink">
           first undergraduate in the university's history
@@ -116,7 +116,7 @@ export default function About() {
       <div className="mt-7">
         <Subheading>Research Focus</Subheading>
 
-        <p className="text-justify text-base hyphens-auto sm:text-lg">
+        <p className="text-justify text-base sm:text-lg">
           My research focuses on the intersection of radar signal processing and wireless
           communication. My thesis explores{' '}
           <span className="font-medium text-ink">

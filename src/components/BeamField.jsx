@@ -49,7 +49,7 @@ const centreOf = (key) => {
 /** Lattice mast with radiating arcs — the transmitter. Also used by <Fleet />. */
 export function BaseStation() {
   return (
-    <g stroke="var(--color-navy)" fill="none" strokeLinecap="round" strokeLinejoin="round">
+    <g stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
       <g strokeWidth="2">
         <path d="M-13 4 L-4 -38 L4 -38 L13 4" />
         <path d="M0 -38 V-52" />
@@ -59,7 +59,7 @@ export function BaseStation() {
         <path d="M-10 -10 L10 -10 M-7 -24 L7 -24" />
         <path d="M-13 4 L7 -24 M13 4 L-7 -24 M-10 -10 L4 -38 M10 -10 L-4 -38" />
       </g>
-      <circle cx="0" cy="-55" r="2.2" fill="var(--color-navy)" stroke="none" />
+      <circle cx="0" cy="-55" r="2.2" fill="currentColor" stroke="none" />
       <ellipse cx="0" cy="5" rx="17" ry="3.4" strokeWidth="1.4" opacity="0.5" />
       {/* radiation */}
       <g strokeWidth="2" strokeLinecap="round">
@@ -85,9 +85,9 @@ export function RisPanel() {
           width="9.5"
           height="10.6"
           rx="1"
-          fill="var(--color-navy)"
+          fill="currentColor"
           fillOpacity="0.16"
-          stroke="var(--color-navy)"
+          stroke="currentColor"
           strokeOpacity="0.5"
           strokeWidth="0.9"
         />,
@@ -104,7 +104,7 @@ export function RisPanel() {
         rx="2"
         fill="var(--color-surface)"
         fillOpacity="0.75"
-        stroke="var(--color-navy)"
+        stroke="currentColor"
         strokeWidth="2.4"
       />
       {cells}
@@ -148,16 +148,20 @@ export default function BeamField({ active }) {
 
   useLayoutEffect(() => {
     if (reduced) return undefined;
-    if (!globalThis.matchMedia?.('(min-width: 64rem)').matches) return undefined;
 
+    /* Both widths now. On a phone the nodes move into the corners of the
+       screen rather than the gutters, which do not exist there, and the beam
+       still runs base station -> RIS -> the card that just opened. */
     const place = () => {
       const w = window.innerWidth;
       const h = window.innerHeight;
+      const wide = globalThis.matchMedia?.('(min-width: 64rem)').matches ?? true;
       setNodes({
         w,
         h,
-        bs: { x: 44, y: h - 52 },
-        ris: { x: w - 44, y: 46 },
+        wide,
+        bs: wide ? { x: 44, y: h - 52 } : { x: 34, y: h - 34 },
+        ris: wide ? { x: w - 44, y: 46 } : { x: w - 36, y: 124 },
       });
     };
 
@@ -213,12 +217,19 @@ export default function BeamField({ active }) {
 
   if (reduced || !nodes) return null;
 
-  const { w, h, bs, ris } = nodes;
+  const { w, h, wide, bs, ris } = nodes;
   const reach = Math.hypot(w, h);
+
+  /* Phone: the section's own accent, because navy on the sand ground was
+     almost invisible at this size, and below the fixed nav rather than over
+     it. Desktop keeps navy in the gutters, where it has always been. */
+  const nodeColor = wide ? 'var(--color-navy)' : 'var(--section-accent)';
+  const nodeScale = wide ? 1 : 0.62;
 
   return (
     <svg
-      className="pointer-events-none fixed inset-0 z-40"
+      className={`pointer-events-none fixed inset-0 ${wide ? 'z-40' : 'z-20'}`}
+      style={{ color: nodeColor }}
       width={w}
       height={h}
       viewBox={`0 0 ${w} ${h}`}
@@ -301,28 +312,39 @@ export default function BeamField({ active }) {
       {/* Nodes persist for the life of the page. The label sits outside the
           transformed glyph so it stays upright. */}
       <g className="beam-node" style={{ '--d': `${INCIDENT_START}ms` }}>
-        <g transform={`translate(${bs.x} ${bs.y}) scale(0.95)`}>
+        <g transform={`translate(${bs.x} ${bs.y}) scale(${0.95 * nodeScale})`}>
           <BaseStation />
         </g>
-        <text className="node-label" x={bs.x} y={bs.y + 20} textAnchor="middle">
-          BASE STATION
-        </text>
-        <text className="node-code" x={bs.x} y={bs.y + 32} textAnchor="middle">
-          TX {telemetry.bits}
-        </text>
+        {/* Labels are a desktop affordance: on a phone they land on the card. */}
+        {wide && (
+          <>
+            <text className="node-label" x={bs.x} y={bs.y + 20} textAnchor="middle">
+              BASE STATION
+            </text>
+            <text className="node-code" x={bs.x} y={bs.y + 32} textAnchor="middle">
+              TX {telemetry.bits}
+            </text>
+          </>
+        )}
       </g>
 
       <g className="beam-node" style={{ '--d': `${RIS_AT}ms` }}>
-        <g transform={`translate(${ris.x} ${ris.y}) rotate(-16) skewY(-9) scale(0.78)`}>
+        <g
+          transform={`translate(${ris.x} ${ris.y}) rotate(-16) skewY(-9) scale(${0.78 * nodeScale})`}
+        >
           <RisPanel />
         </g>
         {/* Short labels: the gutter beside the card is only ~80px wide. */}
-        <text className="node-label" x={ris.x} y={ris.y + 48} textAnchor="middle">
-          RIS
-        </text>
-        <text className="node-code" x={ris.x} y={ris.y + 60} textAnchor="middle">
-          Φ {telemetry.phases}
-        </text>
+        {wide && (
+          <>
+            <text className="node-label" x={ris.x} y={ris.y + 48} textAnchor="middle">
+              RIS
+            </text>
+            <text className="node-code" x={ris.x} y={ris.y + 60} textAnchor="middle">
+              Φ {telemetry.phases}
+            </text>
+          </>
+        )}
       </g>
     </svg>
   );

@@ -4,7 +4,7 @@ import { CompactRow } from '../ui';
 export default function Attachments() {
   return (
     <div>
-      <p className="mb-8 text-justify text-base hyphens-auto text-ink-soft sm:text-lg">
+      <p className="mb-8 text-justify text-base text-ink-soft sm:text-lg">
         Rotations through Bangladesh Air Force maintenance, repair and overhaul units and a
         commercial line-maintenance base. They covered fighter, rotary and transport airframes,
         plus the quality-assurance side of a wide-body operator.

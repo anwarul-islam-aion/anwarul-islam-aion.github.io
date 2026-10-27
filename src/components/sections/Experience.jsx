@@ -98,7 +98,7 @@ function RoleList({ items, onOpen }) {
                 />
               )}
 
-              <p className="mt-2 text-justify text-base leading-normal hyphens-auto text-ink-soft">
+              <p className="mt-2 text-justify text-base leading-normal text-ink-soft">
                 {job.description}{' '}
                 <MoreButton onClick={() => onOpen(asDetail(job, 'job'))}>Read More</MoreButton>
               </p>
@@ -143,7 +143,7 @@ export default function Experience() {
           </div>
         )}
 
-        <p className="text-justify text-base leading-relaxed hyphens-auto sm:text-lg">
+        <p className="text-justify text-base leading-relaxed sm:text-lg">
           {detail.description}
         </p>
 
@@ -152,7 +152,7 @@ export default function Experience() {
         {detail.journey?.length > 0 && (
           <div className="mt-8">
             <Subheading>The Build</Subheading>
-            <div className="space-y-4 text-justify text-base leading-relaxed hyphens-auto">
+            <div className="space-y-4 text-justify text-base leading-relaxed">
               {detail.journey.map((para) => (
                 <p key={para.slice(0, 40)}>{para}</p>
               ))}
@@ -216,7 +216,7 @@ export default function Experience() {
                   </p>
                 )}
 
-                <p className="mt-2 text-justify text-base leading-normal hyphens-auto text-ink-soft">
+                <p className="mt-2 text-justify text-base leading-normal text-ink-soft">
                   {project.description}{' '}
                   <MoreButton onClick={() => setDetail(asDetail(project, 'project'))}>
                     Read More
@@ -236,7 +236,7 @@ export default function Experience() {
         ))}
       </ul>
 
-      <p className="mt-2 text-justify text-base hyphens-auto text-ink-soft">
+      <p className="mt-2 text-justify text-base text-ink-soft">
         Also presented{' '}
         <span className="text-ink">The Technological Advancement of Electric Propulsion</span> at
         Impulse 1.0 in November 2024. It was a case study on ion-thruster propulsion systems, their
