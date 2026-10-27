@@ -385,7 +385,10 @@ export const education = [
     schoolUrl: 'https://aaub.edu.bd',
     location: 'Lalmonirhat, Bangladesh',
     result:
-      'CGPA 3.62 / 4.00 (through 6th semester) · under the supervision of Bangladesh Air Force',
+      /* The Bangladesh Air Force supervision note is deliberately not here. It
+         stays on both resumes, where a recruiter or admissions reader wants it;
+         the site is public, so this line carries the CGPA only. */
+      'CGPA 3.62 / 4.00 (through 6th semester)',
     detail:
       'Thesis: RIS-assisted Integrated Sensing and Communication. This is cellular ISAC, in two subsystems. The first derives the range-resolution limit of a reconfigurable intelligent surface as an element-bandwidth criterion, and tests it against CST full-wave simulation and hardware measurement. The second is 5G downlink sensing. It measures in simulation how sensing degrades as scheduler load changes.',
     curriculumUrl: asset('avionics-curriculum.pdf'),
