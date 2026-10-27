@@ -61,7 +61,7 @@ export default function Panel({ active }) {
        rather than 190ms ahead of it. */
     <div
       style={{ '--section-accent': current?.accent }}
-      className="mt-10 w-full min-w-0 [perspective:2000px] lg:mt-0 lg:min-h-0 lg:grow lg:pb-0 lg:pt-12"
+      className="mt-6 w-full min-w-0 [perspective:2000px] sm:mt-10 lg:mt-0 lg:min-h-0 lg:grow lg:pb-0 lg:pt-12"
     >
       <div
         ref={scroller}
@@ -74,8 +74,8 @@ export default function Panel({ active }) {
             : 'opacity-0 [transform:rotateY(-9deg)_translateX(2rem)]'
         }`}
       >
-        <div className="p-6 sm:p-8 lg:p-10">
-          <h2 className="mb-8 border-b-2 border-[color:var(--section-accent)] pb-3 text-2xl font-semibold uppercase tracking-[0.1em] text-ink">
+        <div className="p-5 sm:p-8 lg:p-10">
+          <h2 className="mb-6 border-b-2 border-[color:var(--section-accent)] pb-3 text-xl font-semibold uppercase tracking-[0.1em] text-ink sm:mb-8 sm:text-2xl">
             {label}
           </h2>
 

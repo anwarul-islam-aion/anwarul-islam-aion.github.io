@@ -4,12 +4,19 @@ import { Card, Subheading, TagLine, CardTitle, MoreButton } from '../ui';
 import ProjectArt from '../ProjectArt';
 import SubPage from '../SubPage';
 
-/** A row whose second half is flush to the right margin. */
+/**
+ * A row whose second half is flush to the right margin, and which stacks below
+ * `sm`. The right half is `shrink-0`, so on a phone an organisation beside a
+ * location ran off the card instead of wrapping: at 375px the row reached
+ * 514px. Stacked, each half gets the full column.
+ */
 function SplitRow({ left, right, className = '' }) {
   return (
-    <div className={`flex items-baseline justify-between gap-4 ${className}`}>
-      <span>{left}</span>
-      {right && <span className="shrink-0 text-right">{right}</span>}
+    <div
+      className={`flex flex-col gap-0.5 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4 ${className}`}
+    >
+      <span className="min-w-0">{left}</span>
+      {right && <span className="shrink-0 sm:text-right">{right}</span>}
     </div>
   );
 }
@@ -133,7 +140,9 @@ export default function Experience() {
           </div>
         )}
 
-        <p className="text-justify text-lg leading-relaxed hyphens-auto">{detail.description}</p>
+        <p className="text-justify text-base leading-relaxed hyphens-auto sm:text-lg">
+          {detail.description}
+        </p>
 
         <TagLine items={detail.tags} label="Topics" />
 

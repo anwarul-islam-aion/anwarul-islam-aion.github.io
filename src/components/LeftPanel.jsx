@@ -12,40 +12,57 @@ export default function LeftPanel({ active, onOpen }) {
       {/* Top-aligned, not centred: the bottom-left corner belongs to the base
           station, and centring pushed the last nav item into it. */}
       <div className="lg:mb-auto lg:mt-0">
-        {/* 1.8x centre crop — the cutout's subject sits at 20-78% x, 27-100% y,
-            so this frames head and shoulders without clipping the hair. */}
-        <div
-          data-beam="portrait"
-          style={{ '--arrive-delay': `${LANDING.portrait}ms` }}
-          className="arrive mb-5 h-24 w-24 overflow-hidden rounded-full ring-1 ring-gold/50 lg:h-28 lg:w-28"
-        >
-          <img
-            src={profile.photo}
-            alt={profile.name}
-            width="900"
-            height="900"
-            className="h-full w-full scale-[1.8] object-cover"
-          />
+        {/* On a phone the portrait sits BESIDE the name. Stacked, the pair cost
+            about 170px before the card even started; side by side, with a 64px
+            portrait, they cost about 70px. The desktop column has the room, so
+            it keeps the stack. */}
+        <div className="flex items-center gap-4 lg:block">
+          {/* 1.8x centre crop — the cutout's subject sits at 20-78% x, 27-100% y,
+              so this frames head and shoulders without clipping the hair. */}
+          <div
+            data-beam="portrait"
+            style={{ '--arrive-delay': `${LANDING.portrait}ms` }}
+            className="arrive h-16 w-16 shrink-0 overflow-hidden rounded-full ring-1 ring-gold/50 lg:mb-5 lg:h-28 lg:w-28"
+          >
+            <img
+              src={profile.photo}
+              alt={profile.name}
+              width="900"
+              height="900"
+              className="h-full w-full scale-[1.8] object-cover"
+            />
+          </div>
+
+          <div className="min-w-0">
+            {/* The name wraps beside the portrait on a phone; from `lg` the
+                clamp keeps it on one line up to the 1600px cap. */}
+            <h1
+              data-beam="name"
+              style={{ '--arrive-delay': `${LANDING.name}ms` }}
+              className="arrive-focus text-xl font-bold leading-tight tracking-tight text-ink lg:whitespace-nowrap lg:text-[clamp(1.3rem,2vw,1.9rem)] lg:leading-normal"
+            >
+              <a href="#about" onClick={() => onOpen('about')}>
+                {profile.name}
+              </a>
+            </h1>
+
+            <div className="arrive" style={{ '--arrive-delay': `${LANDING.rotator}ms` }}>
+              <RoleRotator />
+            </div>
+          </div>
         </div>
 
-        {/* clamp keeps the name on one line from 1024px up to the 1600px cap */}
-        <h1
-          data-beam="name"
-          style={{ '--arrive-delay': `${LANDING.name}ms` }}
-          className="arrive-focus whitespace-nowrap text-[clamp(1.3rem,2vw,1.9rem)] font-bold tracking-tight text-ink"
+        {/* Desktop: the card index down the left column. Phone: a scrollable
+            chip row pinned to the top of the screen, so whichever section you
+            are reading, the next one is always one tap away. Fixed rather than
+            sticky on purpose — sticky would only hold while this header was on
+            screen, which is the first 200px of the page. */}
+        <nav
+          className="fixed inset-x-0 top-0 z-30 border-b border-rule bg-paper/95 px-4 py-2 backdrop-blur lg:static lg:mt-6 lg:border-0 lg:bg-transparent lg:px-0 lg:py-0 lg:backdrop-blur-none"
+          aria-label="Sections"
+          data-beam="nav"
         >
-          <a href="#about" onClick={() => onOpen('about')}>
-            {profile.name}
-          </a>
-        </h1>
-
-        <div className="arrive" style={{ '--arrive-delay': `${LANDING.rotator}ms` }}>
-          <RoleRotator />
-        </div>
-
-        {/* Desktop: the card index. Mobile: a scrollable chip row. */}
-        <nav className="mt-8 lg:mt-6" aria-label="Sections" data-beam="nav">
-          <ul className="-mx-6 flex snap-x gap-2 overflow-x-auto px-6 pb-2 lg:mx-0 lg:w-max lg:flex-col lg:gap-0 lg:overflow-visible lg:px-0 lg:pb-0">
+          <ul className="-mx-4 flex snap-x gap-2 overflow-x-auto px-4 lg:mx-0 lg:w-max lg:flex-col lg:gap-0 lg:overflow-visible lg:px-0 lg:pb-0">
             {sections.map(({ id, label, accent }, index) => {
               const isActive = active === id;
               return (
@@ -58,7 +75,7 @@ export default function LeftPanel({ active, onOpen }) {
                       as a legend for the card accents. */}
                   <a
                     style={{ '--item-accent': accent }}
-                    className="group flex items-center rounded-full border border-rule px-4 py-2 lg:rounded-none lg:border-0 lg:px-0 lg:py-2"
+                    className="group flex items-center rounded-full border border-rule px-4 py-2.5 lg:rounded-none lg:border-0 lg:px-0 lg:py-2"
                     href={`#${id}`}
                     onClick={() => onOpen(id)}
                     aria-current={isActive ? 'page' : undefined}

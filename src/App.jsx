@@ -32,7 +32,12 @@ export default function App() {
       {/* Asymmetric gutters: the left rail is gone, so that side only needs
           clearance for the base station, while the right still holds the email
           rail. That is what shifts the card left and lets it grow. */}
-      <div className="mx-auto flex max-w-[1600px] flex-col px-6 py-12 md:px-10 lg:h-full lg:flex-row lg:gap-9 lg:py-0 lg:pl-14 lg:pr-20">
+      {/* px-4 on a phone, not px-6: with the card's own padding inside it, 24pt
+          gutters left the text column under 280px. */}
+      {/* pt-20 clears the section nav, which is fixed to the top of the screen
+          below `lg`. From `lg` the nav returns to the left column and the
+          padding goes back to the desktop figures. */}
+      <div className="mx-auto flex max-w-[1600px] flex-col px-4 pb-8 pt-20 sm:px-6 sm:pb-12 md:px-10 lg:h-full lg:flex-row lg:gap-9 lg:py-0 lg:pl-14 lg:pr-20">
         <LeftPanel active={active} onOpen={open} />
 
         <main id="main" className="flex min-w-0 flex-col lg:h-full lg:w-[73%]">

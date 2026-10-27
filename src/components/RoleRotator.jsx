@@ -46,14 +46,14 @@ export default function RoleRotator() {
 
   if (reduced) {
     return (
-      <p className="mt-2text-lg font-medium tracking-tight text-navy sm:text-xl">
+      <p className="mt-2 text-base font-medium tracking-tight text-navy sm:text-xl">
         {roles.join(' · ')}
       </p>
     );
   }
 
   return (
-    <p className="mt-2min-h-8 text-lg font-medium tracking-tight text-navy sm:text-xl">
+    <p className="mt-2 min-h-7 text-base font-medium tracking-tight text-navy sm:min-h-8 sm:text-xl">
       <span className="sr-only">{roles.join(', ')}</span>
       <span aria-hidden="true">
         {text}

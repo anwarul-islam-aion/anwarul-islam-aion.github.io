@@ -281,6 +281,16 @@
       animation: none;
     }
   }
+
+  /* Justification needs a wide measure. The card is ~280px across on a phone,
+     where justifying opens rivers of white space between the words; hyphens
+     narrow them but cannot close them. The desktop column is wide enough to
+     justify properly, so this only gives way below `sm`. */
+  @media (max-width: 639px) {
+    .text-justify {
+      text-align: left;
+    }
+  }
 }
 
 @layer base {
