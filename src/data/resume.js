@@ -174,7 +174,7 @@ export const research = [
     roles: [],
     org: 'GNSS-Denied Navigation from Landmarks',
     orgUrl: null,
-    location: 'Under review, Journal of Field Robotics',
+    location: 'Under review, Robotics (MDPI)',
     supervisor: null,
     hours: null,
     description:
@@ -337,8 +337,8 @@ export const publications = [
   },
   {
     title:
-      'The Cross-Track Information Cost of Weakly Observable Landmark Orientation: A Closed-Form Retention Law and Its Operating Conditions in Visual Teach-and-Repeat',
-    venue: 'Journal of Field Robotics (Wiley)',
+      'Calibrated, Uncertainty-Aware Fusion of Sparse Pole Bearings with Place Recognition for Cross-Track-Accurate GPS-Denied Navigation',
+    venue: 'Robotics (MDPI)',
     place: null,
     year: '2026',
     status: 'Under review',
