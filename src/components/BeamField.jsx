@@ -7,6 +7,13 @@ const RETRANSMIT = { incidentAt: 0, incidentMs: 280, reflectAt: 240, flightMs: 3
 const ARRIVAL_LIFE = 2400;
 
 /**
+ * Whether the beams fire below `lg`. Off for now: the phone beam was built and
+ * works, it just was not wanted. Flip to true to restore it. The base station
+ * and the RIS keep drawing on a phone either way.
+ */
+const MOBILE_BEAMS = false;
+
+/**
  * Beam with a rounded tip: a wedge from the source, capped by a cubic that
  * bulges past the target. A flat far edge reads as a triangle; this reads as a
  * lobe.
@@ -264,8 +271,11 @@ export default function BeamField({ active }) {
         </linearGradient>
       </defs>
 
-      {/* Beams are keyed by shot id so each transmission restarts cleanly. */}
-      {shot && (
+      {/* Beams are keyed by shot id so each transmission restarts cleanly.
+          Beams are DESKTOP ONLY for now: the phone version worked but was not
+          wanted. Set MOBILE_BEAMS at the top of this file back to true to
+          bring it back. The base station and the RIS still draw on a phone. */}
+      {(wide || MOBILE_BEAMS) && shot && (
         <g key={shot.id}>
           <path
             className="beam-incident"
