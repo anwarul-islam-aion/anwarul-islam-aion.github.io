@@ -324,7 +324,7 @@ export const projects = [
     // A card with a `photo` shows it where the drawing would be. The drawing in
     // `art` stays as the fallback for cards that have no photograph.
     photo: {
-      src: asset('cansat-payload-thumb.jpg'),
+      src: asset('cansat-payload-cover.jpg'),
       caption: 'The Ababil payload, autogyro rotors folded out',
     },
     journey: [],
@@ -376,7 +376,7 @@ export const projects = [
     tags: ['Aerodynamics', 'EDF Propulsion', '3D Printing'],
     meta: 'Independent · Team Lead',
     photo: {
-      src: asset('oblique-wing-prototype-thumb.jpg'),
+      src: asset('oblique-wing-prototype-cover.jpg'),
       caption: 'The oblique-wing prototype with its wing pivoted',
     },
     journey: [],
