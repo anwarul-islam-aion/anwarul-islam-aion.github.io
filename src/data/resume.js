@@ -457,6 +457,17 @@ export const publications = [
     },
     abstract: 'This paper introduces LIFE-MAP (Life Investigation Framework for Extraterrestrial Mapping and Analysis Protocol), a modular system developed to accurately identify biosignatures in extraterrestrial environments. Combining advanced mechanical, electronic, and sensor technologies, LIFE-MAP integrates biomolecular assays, microbial volatile organic compound (mVOC) analysis, and environmental monitoring to classify samples as Extant, Extinct, or NPL (No Presence of Life). With specialized sensors designed to detect proteins, carbohydrates, chlorophyll, and microbial byproducts like ethanol and formaldehyde. The system provides precise astrobiological detection using multibiomolecule based soil analysis and CNN based rock analysis. The modular design of LIFE-MAP enables seamless integration with robotic platforms, including Mars rovers. This system marks a significant advancement in life-detection technologies, drawing inspiration from exploration missions to extreme environments where life adapts to harsh conditions, including nuclear disaster sites. The system-s ability to assess all parameters positions it as a vital tool for future missions, offering a comprehensive and efficient approach to detect life across a range of extreme environments.',
   },
+  {
+    title: 'A Systems Case Study of Fourth-Line Avionics Overhaul on a Legacy F-7 Supersonic Fighter',
+    venue: 'Technical report, Zenodo',
+    place: null,
+    year: '2026',
+    doi: '10.5281/zenodo.23897648',
+    url: 'https://doi.org/10.5281/zenodo.23897648',
+    presentation: null,
+    abstract:
+      'A depot level study of fourth-line avionics overhaul on the F-7 series fighter, written from observation at a maintenance, repair and overhaul facility. The report sets out the aircraft baseline first: the naming conventions, the variants in service, the major structural components and where they sit, the semi-monocoque construction and the geometry and performance figures that follow from it. It then walks the overhaul itself, from inspection through bench testing, calibration and certification, which is the sequence that returns an airframe to serviceable condition once its overhaul interval ends.',
+  },
 ];
 
 
