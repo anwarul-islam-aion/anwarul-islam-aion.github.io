@@ -71,7 +71,7 @@ function RoleList({ items, onOpen }) {
                   src={job.photo.src}
                   alt={job.photo.caption}
                   loading="lazy"
-                  className="mt-3 w-full max-w-[200px] border border-rule object-cover sm:max-w-none"
+                  className="mt-3 h-40 w-auto max-w-full border border-rule object-contain"
                 />
               )}
             </div>
@@ -147,12 +147,6 @@ export default function Experience() {
           )
         }
       >
-        {detail.art && (
-          <div className="mb-7 max-w-sm text-[color:var(--section-accent)]">
-            <ProjectArt kind={detail.art} />
-          </div>
-        )}
-
         <p className="text-justify text-base leading-relaxed sm:text-lg">
           {detail.description}
         </p>
@@ -180,7 +174,7 @@ export default function Experience() {
                     src={shot.src}
                     alt={shot.caption}
                     loading="lazy"
-                    className="w-full border border-rule object-cover"
+                    className="h-56 w-auto max-w-full border border-rule object-contain"
                   />
                   {shot.caption && (
                     <figcaption className="mt-2 text-sm text-ink-soft">{shot.caption}</figcaption>
@@ -241,11 +235,7 @@ export default function Experience() {
                     src={project.photo.src}
                     alt={project.photo.caption}
                     loading="lazy"
-                    className={`aspect-[4/3] w-full border border-rule sm:aspect-auto sm:h-full ${
-                      project.photo.fit === 'contain'
-                        ? 'bg-paper-alt object-contain p-2'
-                        : 'object-cover'
-                    }`}
+                    className="h-40 w-auto max-w-full border border-rule object-contain"
                   />
                 ) : (
                   <ProjectArt kind={project.art} />

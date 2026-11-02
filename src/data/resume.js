@@ -356,9 +356,6 @@ export const projects = [
     tags: ['Rover Systems', 'Sample Handling', 'Science Payload', 'Autonomy'],
     meta: 'ARC 2025, Turkey · Team Rover71 · Global Finalist (8th)',
     photo: {
-      // A drawing, not a photograph. `contain` keeps the whole arena in frame
-      // where `cover` would crop the outer ring away.
-      fit: 'contain',
       src: asset('rover-mission-area.png'),
       caption: 'The exploration area and the order the mission runs in',
     },
