@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { jobs, research, teamExperience, projects } from '../../data/resume';
-import { Card, Subheading, TagLine, CardTitle, MoreButton } from '../ui';
+import { jobs, research, teamExperience, projects, internships } from '../../data/resume';
+import { Card, Subheading, TagLine, CardTitle, MoreButton, CompactRow } from '../ui';
 import ProjectArt from '../ProjectArt';
 import SubPage from '../SubPage';
 
@@ -242,6 +242,27 @@ export default function Experience() {
                 )}
               </div>
             </Card>
+          </li>
+        ))}
+      </ul>
+
+      {/* Was a section of its own until it folded in here. Six one-line
+          rotations did not fill a tab, and they are work experience. */}
+      <Subheading>Industrial Attachments</Subheading>
+
+      <p className="mb-6 text-justify text-base text-ink-soft">
+        Rotations through Bangladesh Air Force maintenance, repair and overhaul units and a
+        commercial line-maintenance base. They covered fighter, rotary and transport airframes,
+        plus the quality-assurance side of a wide-body operator.
+      </p>
+
+      <ul className="group/list mb-12">
+        {internships.map((stint) => (
+          <li key={stint.org} className="mb-3">
+            <CompactRow lead={stint.duration} leadWidth="narrow">
+              <span className="text-base font-medium text-ink">{stint.org}</span>
+              <span className="text-base text-ink-soft">: {stint.detail}</span>
+            </CompactRow>
           </li>
         ))}
       </ul>

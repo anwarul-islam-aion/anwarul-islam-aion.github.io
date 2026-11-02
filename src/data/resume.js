@@ -110,15 +110,24 @@ export const researchInterests = [
  * heading, that card's meta labels, and the nav indicator. All eight are deep,
  * desaturated tones that clear 5:1 on white, so they stay legible as text.
  */
+/*
+ * `short` is what the phone navigation shows. A chip row and a wrapped foot
+ * rail have a fraction of the width the desktop index has, and "Leadership &
+ * Volunteering" set in tracked capitals took a whole line of a 375px screen.
+ * The long `label` still titles the card and still runs down the left column.
+ *
+ * Industrial Attachments is no longer a section of its own. It was six
+ * one-line rotations, which did not carry a tab, and it belongs with the rest
+ * of the work. It is now the last block inside Experience.
+ */
 export const sections = [
-  { id: 'about', label: 'About', accent: '#1e3a5f' }, // navy
-  { id: 'education', label: 'Education & Skills', accent: '#2f5d62' }, // teal
-  { id: 'experience', label: 'Experience & Projects', accent: '#8a5a3b' }, // umber
-  { id: 'attachments', label: 'Industrial Attachments', accent: '#4a6741' }, // moss
-  { id: 'publications', label: 'Publications & Grants', accent: '#7a3b4a' }, // burgundy
-  { id: 'honors', label: 'Honors & Awards', accent: '#7d6033' }, // bronze
-  { id: 'leadership', label: 'Leadership & Volunteering', accent: '#5b4b7a' }, // plum
-  { id: 'references', label: 'References', accent: '#6b5b4e' }, // taupe
+  { id: 'about', label: 'About', short: 'About', accent: '#1e3a5f' }, // navy
+  { id: 'education', label: 'Education & Skills', short: 'Education', accent: '#2f5d62' }, // teal
+  { id: 'experience', label: 'Experience & Projects', short: 'Experiences', accent: '#8a5a3b' }, // umber
+  { id: 'publications', label: 'Publications & Grants', short: 'Publications', accent: '#7a3b4a' }, // burgundy
+  { id: 'honors', label: 'Honors & Awards', short: 'Honors & Awards', accent: '#7d6033' }, // bronze
+  { id: 'leadership', label: 'Leadership & Volunteering', short: 'Leadership', accent: '#5b4b7a' }, // plum
+  { id: 'references', label: 'References', short: 'References', accent: '#6b5b4e' }, // taupe
 ];
 
 /**

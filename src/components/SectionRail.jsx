@@ -16,7 +16,7 @@ export default function SectionRail({ active, onOpen }) {
   return (
     <nav aria-label="Sections" className="mt-10 border-t border-rule pt-6 lg:hidden">
       <ul className="flex flex-wrap gap-2">
-        {sections.map(({ id, label, accent }) => {
+        {sections.map(({ id, short, accent }) => {
           const isActive = active === id;
           return (
             <li key={id}>
@@ -27,7 +27,7 @@ export default function SectionRail({ active, onOpen }) {
                 onClick={() => onOpen(id)}
                 aria-current={isActive ? 'page' : undefined}
               >
-                {label}
+                {short}
               </a>
             </li>
           );

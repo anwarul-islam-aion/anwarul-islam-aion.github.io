@@ -6,7 +6,6 @@ import { LANDING } from '../lib/arrival';
 import About from './sections/About';
 import Education from './sections/Education';
 import Experience from './sections/Experience';
-import Attachments from './sections/Attachments';
 import Publications from './sections/Publications';
 import Honors from './sections/Honors';
 import Leadership from './sections/Leadership';
@@ -16,7 +15,6 @@ const registry = {
   about: About,
   education: Education,
   experience: Experience,
-  attachments: Attachments,
   publications: Publications,
   honors: Honors,
   leadership: Leadership,

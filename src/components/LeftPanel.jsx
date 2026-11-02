@@ -124,7 +124,7 @@ export default function LeftPanel({ active, onOpen }) {
                   className="fixed inset-0 z-40 cursor-default bg-ink/10"
                 />
                 <ul className="absolute left-0 top-12 z-50 w-64 overflow-hidden rounded-xl border border-rule bg-paper shadow-lg">
-                  {sections.map(({ id, label, accent }, index) => (
+                  {sections.map(({ id, short, accent }, index) => (
                     <li key={id} className="border-b border-divider last:border-b-0">
                       <a
                         href={`#${id}`}
@@ -136,7 +136,7 @@ export default function LeftPanel({ active, onOpen }) {
                           style={{ color: active === id ? accent : undefined }}
                           className="text-[0.78rem] font-bold uppercase tracking-[0.08em] text-nav"
                         >
-                          {label}
+                          {short}
                         </span>
                         <span className="shrink-0 font-mono text-[0.7rem] text-ink-soft">
                           {index + 1}/{sections.length}
@@ -150,7 +150,7 @@ export default function LeftPanel({ active, onOpen }) {
           </div>
 
           <ul className="-mr-4 flex min-w-0 flex-1 snap-x gap-2 overflow-x-auto pr-4 lg:mx-0 lg:w-max lg:flex-col lg:gap-0 lg:overflow-visible lg:pr-0 lg:pb-0">
-            {sections.map(({ id, label, accent }, index) => {
+            {sections.map(({ id, label, short, accent }, index) => {
               const isActive = active === id;
               return (
                 <li
@@ -190,7 +190,8 @@ export default function LeftPanel({ active, onOpen }) {
                         isActive ? 'underline decoration-2 underline-offset-4' : ''
                       }`}
                     >
-                      {label}
+                      <span className="lg:hidden">{short}</span>
+                      <span className="hidden lg:inline">{label}</span>
                     </span>
                   </a>
                 </li>

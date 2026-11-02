@@ -11,8 +11,15 @@ const fromHash = () => {
 export default function useHashSection() {
   const [active, setActive] = useState(fromHash);
 
+  const toTop = () => {
+    if (globalThis.scrollY > 0) globalThis.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   useEffect(() => {
-    const onHashChange = () => setActive(fromHash());
+    const onHashChange = () => {
+      setActive(fromHash());
+      if (globalThis.scrollY > 0) globalThis.scrollTo({ top: 0, behavior: 'smooth' });
+    };
     addEventListener('hashchange', onHashChange);
     return () => removeEventListener('hashchange', onHashChange);
   }, []);
@@ -21,6 +28,7 @@ export default function useHashSection() {
     if (ids.includes(id)) {
       history.replaceState(null, '', `#${id}`);
       setActive(id);
+      toTop();
     }
   }, []);
 
