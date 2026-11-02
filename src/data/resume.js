@@ -512,6 +512,11 @@ export const education = [
 ];
 
 export const awards = [
+  {
+    year: '2026',
+    title: 'Vice Chancellor Scholarship',
+    detail: 'AAUB, for academic excellence. Perfect semester CGPA 4.00/4.00',
+  },
   { year: '2025', title: 'Global Finalist', detail: 'CanSat Competition 2025, Virginia, USA' },
   {
     year: '2025',
