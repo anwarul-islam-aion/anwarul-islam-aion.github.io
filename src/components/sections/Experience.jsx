@@ -71,7 +71,7 @@ function RoleList({ items, onOpen }) {
                   src={job.photo.src}
                   alt={job.photo.caption}
                   loading="lazy"
-                  className="mt-3 w-full border border-rule object-contain"
+                  className="mt-3 max-h-52 w-auto max-w-full border border-rule object-contain"
                 />
               )}
             </div>
@@ -235,7 +235,7 @@ export default function Experience() {
                     src={project.photo.src}
                     alt={project.photo.caption}
                     loading="lazy"
-                    className="h-40 w-auto max-w-full border border-rule object-contain"
+                    className="max-h-52 w-auto max-w-full border border-rule object-contain"
                   />
                 ) : (
                   <ProjectArt kind={project.art} />
