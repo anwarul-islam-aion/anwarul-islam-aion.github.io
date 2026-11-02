@@ -235,7 +235,7 @@ export default function Experience() {
                     src={project.photo.src}
                     alt={project.photo.caption}
                     loading="lazy"
-                    className="max-h-52 w-auto max-w-full border border-rule object-contain"
+                    className="max-h-64 w-auto max-w-full border border-rule object-contain"
                   />
                 ) : (
                   <ProjectArt kind={project.art} />
