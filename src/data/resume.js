@@ -229,8 +229,31 @@ export const teamExperience = [
     description:
       "Core electrical and power-systems engineer for a CanSat-class small satellite, now leading the team. Built the power architecture that carried Ababil to the CanSat 2025 finals in Virginia, USA. The competition is run by the American Astronautical Society and NASA. Team Ababil became the country's first Global Finalist in it. Co-authored and presented the team's peer-reviewed paper at MEPCON 2025.",
     tags: ['Power Systems', 'PCB Design', 'Altium Designer', 'Embedded', 'Telemetry'],
+    // `photo` is the one shot that rides in the entry's left column, beside the
+    // date. Only this entry has one. The rest of the album waits in Read More.
+    photo: {
+      src: asset('cansat-rocket.jpg'),
+      caption: 'Ababil on the pad, CanSat 2025, Virginia',
+    },
     journey: [],
-    gallery: [],
+    gallery: [
+      {
+        src: asset('cansat-rocket.jpg'),
+        caption: 'Ababil loaded for flight at the CanSat 2025 finals in Virginia.',
+      },
+      {
+        src: asset('cansat-team.jpg'),
+        caption: 'Team Ababil at the launch rail on competition day.',
+      },
+      {
+        src: asset('cansat-team-banner.jpg'),
+        caption: 'The full team at the range in Virginia, with the university and national flags.',
+      },
+      {
+        src: asset('cansat-brief.jpg'),
+        caption: 'The competition briefing. CanSat is run by the American Astronautical Society with the US Naval Research Laboratory.',
+      },
+    ],
   },
   {
     date: 'Nov 2024 to Apr 2026',
@@ -284,28 +307,65 @@ export const internships = [
 export const projects = [
   /* Research lives in `research` above, not here: the radar, the thesis and the
      three running studies each had a card as well as an entry, which said the
-     same thing twice on one page. This section is the built work. */
+     same thing twice on one page. This section is the built work.
+
+     SECOND RULE, same reason. A card describes the MISSION its competition set,
+     not the role played in it and not the paper that came out of it. The role
+     is in `teamExperience`, the paper is in `publications`. The CanSat and the
+     rover cards once repeated both and read as a third copy of each. */
   {
     art: 'cansat',
-    title: 'Resilient Power Systems for CanSat-Class Satellites',
-    url: 'https://doi.org/10.1109/MEPCON66918.2026.11360120',
+    title: 'Auto-gyro Payload Descent and Container Separation for a CanSat-class Satellite',
+    url: null,
     description:
-      'A fault-tolerant power architecture for reusable CanSat-class small satellites, developed for Team Ababil and flown at the CanSat 2025 finals in Virginia. Published and presented at the 26th International Middle East Power Systems Conference.',
-    tags: ['Power Electronics', 'Small Satellites', 'IEEE MEPCON'],
-    meta: "Team Ababil · Country's first Global Finalist",
+      'The competition sets the mission. A payload rides inside a container on a rocket, with the nose cone as part of the payload. The container deploys at peak altitude and descends under a parachute at no more than 20 meters per second. At 75 percent of peak altitude the payload separates and comes down on auto-gyro rotors at 5 meters per second. One camera watches that separation and a second looks 45 degrees from nadir, held north and spin stabilised. Sensor data reaches the ground station at 1 Hz through ascent and descent.',
+    tags: ['Container and Payload', 'Auto-gyro Descent', 'Recovery', 'Telemetry'],
+    meta: 'CanSat 2025, Virginia, USA · Team Ababil · Global Finalist (16th)',
+    // A card with a `photo` shows it where the drawing would be. The drawing in
+    // `art` stays as the fallback for cards that have no photograph.
+    photo: {
+      src: asset('cansat-payload.jpg'),
+      caption: 'The Ababil payload, autogyro rotors folded out',
+    },
     journey: [],
-    gallery: [],
+    gallery: [
+      {
+        src: asset('cansat-payload.jpg'),
+        caption: 'The payload in hand. The power boards, cameras and autogyro rotor head are stacked above the recovered nose cup.',
+      },
+      {
+        src: asset('cansat-payload-container.jpg'),
+        caption: 'The payload beside its container. The container shields the payload through ascent and releases it at 75 percent altitude.',
+      },
+      {
+        src: asset('cansat-mission-profile.png'),
+        caption: 'The mission profile. The container descends under parachute and the payload separates at 75 percent altitude, then comes down on autogyro rotors.',
+      },
+      {
+        src: asset('cansat-flags.jpg'),
+        caption: 'The competition tent in Virginia, with the Bangladesh flag among the finalist teams.',
+      },
+    ],
   },
   {
     art: 'rover',
-    title: 'LIFE-MAP: Biosignature Detection Protocol',
-    url: 'https://doi.org/10.1109/TENCON66050.2025.11375044',
+    title: 'Subsurface Sampling and Base Servicing Rover',
+    url: null,
     description:
-      'An indigenous biosignature detection protocol using multi-biomolecule based analysis, built as the Science & Environment Analysis module of the Rover71 Mars rover. Published at IEEE TENCON 2025.',
-    tags: ['Astrobiology', 'Instrumentation', 'IEEE TENCON'],
-    meta: 'Team Rover71 · 8th globally',
+      'The challenge sets two field missions in one arena. On the Mars run the rover leaves its landing area for two sampling areas, takes subsurface samples and carries a power unit out to a stranded water ice extractor, then returns to the base airlock. On the Moon run it works around a permanent base, setting up an antenna for communication, surveying a lava tube for fuel sources and carrying out maintenance and repair on deployed equipment.',
+    tags: ['Rover Systems', 'Sample Handling', 'Science Payload', 'Autonomy'],
+    meta: 'ARC 2025, Turkey · Team Rover71 · Global Finalist (8th)',
+    photo: {
+      src: asset('rover-mission-area.png'),
+      caption: 'The exploration area and the order the mission runs in',
+    },
     journey: [],
-    gallery: [],
+    gallery: [
+      {
+        src: asset('rover-mission-area.png'),
+        caption: 'The arena. The rover starts at the landing area, works two sampling areas in turn and ends at the Mars base and airlock.',
+      },
+    ],
   },
   {
     art: 'obliquewing',
@@ -315,8 +375,29 @@ export const projects = [
       'A flying prototype of the NASA AD-1 oblique-wing configuration, designed and built independently, with a custom 3D-printed EDF propulsion unit and a thrust-configuration test campaign behind it.',
     tags: ['Aerodynamics', 'EDF Propulsion', '3D Printing'],
     meta: 'Independent · Team Lead',
+    photo: {
+      src: asset('oblique-wing-prototype.jpg'),
+      caption: 'The oblique-wing prototype with its wing pivoted',
+    },
     journey: [],
-    gallery: [],
+    gallery: [
+      {
+        src: asset('oblique-wing-prototype.jpg'),
+        caption: 'The prototype as flown. One wing panel sweeps forward and the other aft, so the whole wing pivots about a single point.',
+      },
+      {
+        src: asset('oblique-wing-ad1.png'),
+        caption: 'The configuration this follows. NASA flew it on the AD-1 between 1979 and 1982.',
+      },
+      {
+        src: asset('oblique-wing-edf-shell.jpg'),
+        caption: 'The ducted fan shell printed against its SolidWorks model.',
+      },
+      {
+        src: asset('oblique-wing-edf-rotor.jpg'),
+        caption: 'The printed rotor inside the duct. Blade count and pitch were the variables in the thrust test campaign.',
+      },
+    ],
   },
 ];
 

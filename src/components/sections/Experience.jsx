@@ -62,6 +62,20 @@ function RoleList({ items, onOpen }) {
               {job.date}
             </div>
 
+            {/* The left column is the date column. An entry with a photo hangs
+                it underneath, where it reads as a stamp on the entry rather
+                than as an illustration competing with the text. */}
+            {job.photo && (
+              <figure className="z-10 mb-4 sm:col-span-2 sm:-mt-1">
+                <img
+                  src={job.photo.src}
+                  alt={job.photo.caption}
+                  loading="lazy"
+                  className="w-full max-w-[220px] border border-rule object-cover sm:max-w-none"
+                />
+              </figure>
+            )}
+
             <div className="z-10 sm:col-span-6">
               {/* Organisation once with the location flush right; repeating the
                   org per role read as noise when an entry has two of them. */}
@@ -103,10 +117,6 @@ function RoleList({ items, onOpen }) {
                 <MoreButton onClick={() => onOpen(asDetail(job, 'job'))}>Read More</MoreButton>
               </p>
 
-              {/* Phone: the list stays readable, the tags wait in Read More. */}
-              <div className="hidden sm:block">
-                <TagLine items={job.tags} />
-              </div>
             </div>
           </Card>
         </li>
@@ -223,13 +233,19 @@ export default function Experience() {
                   </MoreButton>
                 </p>
 
-                <div className="hidden sm:block">
-                  <TagLine items={project.tags} label="Topics" />
-                </div>
               </div>
 
               <div className="z-10 sm:order-1 sm:col-span-2">
-                <ProjectArt kind={project.art} />
+                {project.photo ? (
+                  <img
+                    src={project.photo.src}
+                    alt={project.photo.caption}
+                    loading="lazy"
+                    className="w-full border border-rule object-cover"
+                  />
+                ) : (
+                  <ProjectArt kind={project.art} />
+                )}
               </div>
             </Card>
           </li>
