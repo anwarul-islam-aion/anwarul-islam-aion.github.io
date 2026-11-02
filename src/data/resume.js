@@ -232,7 +232,7 @@ export const teamExperience = [
     // `photo` is the one shot that rides in the entry's left column, beside the
     // date. Only this entry has one. The rest of the album waits in Read More.
     photo: {
-      src: asset('cansat-rocket.jpg'),
+      src: asset('cansat-rocket-thumb.jpg'),
       caption: 'Ababil on the pad, CanSat 2025, Virginia',
     },
     journey: [],
@@ -324,7 +324,7 @@ export const projects = [
     // A card with a `photo` shows it where the drawing would be. The drawing in
     // `art` stays as the fallback for cards that have no photograph.
     photo: {
-      src: asset('cansat-payload.jpg'),
+      src: asset('cansat-payload-thumb.jpg'),
       caption: 'The Ababil payload, autogyro rotors folded out',
     },
     journey: [],
@@ -376,7 +376,7 @@ export const projects = [
     tags: ['Aerodynamics', 'EDF Propulsion', '3D Printing'],
     meta: 'Independent · Team Lead',
     photo: {
-      src: asset('oblique-wing-prototype.jpg'),
+      src: asset('oblique-wing-prototype-thumb.jpg'),
       caption: 'The oblique-wing prototype with its wing pivoted',
     },
     journey: [],
@@ -386,7 +386,7 @@ export const projects = [
         caption: 'The prototype as flown. One wing panel sweeps forward and the other aft, so the whole wing pivots about a single point.',
       },
       {
-        src: asset('oblique-wing-ad1.png'),
+        src: asset('oblique-wing-ad1.jpg'),
         caption: 'The configuration this follows. NASA flew it on the AD-1 between 1979 and 1982.',
       },
       {
