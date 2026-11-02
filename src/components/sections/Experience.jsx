@@ -71,7 +71,7 @@ function RoleList({ items, onOpen }) {
                   src={job.photo.src}
                   alt={job.photo.caption}
                   loading="lazy"
-                  className="mt-3 h-40 w-auto max-w-full border border-rule object-contain"
+                  className="mt-3 w-full border border-rule object-contain"
                 />
               )}
             </div>
@@ -167,14 +167,14 @@ export default function Experience() {
         {detail.gallery?.length > 0 && (
           <div className="mt-8">
             <Subheading>Album</Subheading>
-            <div className="grid gap-4 sm:grid-cols-2">
+            <div className="grid gap-6">
               {detail.gallery.map((shot) => (
                 <figure key={shot.src}>
                   <img
                     src={shot.src}
                     alt={shot.caption}
                     loading="lazy"
-                    className="h-56 w-auto max-w-full border border-rule object-contain"
+                    className="h-80 w-auto max-w-full border border-rule object-contain"
                   />
                   {shot.caption && (
                     <figcaption className="mt-2 text-sm text-ink-soft">{shot.caption}</figcaption>
