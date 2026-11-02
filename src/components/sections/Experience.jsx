@@ -55,26 +55,26 @@ function RoleList({ items, onOpen }) {
       {items.map((job) => (
         <li key={job.org} className="mb-10">
           <Card>
-            <div
-              className="z-10 mb-2 mt-1 font-mono text-sm font-semibold uppercase tracking-wide text-[color:var(--section-accent)] sm:col-span-2"
-              aria-label={job.date}
-            >
-              {job.date}
-            </div>
+            <div className="z-10 mb-2 mt-1 sm:col-span-2">
+              <div
+                className="font-mono text-sm font-semibold uppercase tracking-wide text-[color:var(--section-accent)]"
+                aria-label={job.date}
+              >
+                {job.date}
+              </div>
 
-            {/* The left column is the date column. An entry with a photo hangs
-                it underneath, where it reads as a stamp on the entry rather
-                than as an illustration competing with the text. */}
-            {job.photo && (
-              <figure className="z-10 mb-4 sm:col-span-2 sm:-mt-1">
+              {/* Inside the date cell, not beside it. As its own grid child the
+                  photo claimed the next two columns and knocked the text onto a
+                  second row. */}
+              {job.photo && (
                 <img
                   src={job.photo.src}
                   alt={job.photo.caption}
                   loading="lazy"
-                  className="w-full max-w-[220px] border border-rule object-cover sm:max-w-none"
+                  className="mt-3 w-full max-w-[200px] border border-rule object-cover sm:max-w-none"
                 />
-              </figure>
-            )}
+              )}
+            </div>
 
             <div className="z-10 sm:col-span-6">
               {/* Organisation once with the location flush right; repeating the
@@ -241,7 +241,11 @@ export default function Experience() {
                     src={project.photo.src}
                     alt={project.photo.caption}
                     loading="lazy"
-                    className="w-full border border-rule object-cover"
+                    className={`aspect-[4/3] w-full border border-rule sm:aspect-auto sm:h-full ${
+                      project.photo.fit === 'contain'
+                        ? 'bg-paper-alt object-contain p-2'
+                        : 'object-cover'
+                    }`}
                   />
                 ) : (
                   <ProjectArt kind={project.art} />
