@@ -1,5 +1,6 @@
 import { profile } from '../data/resume';
 import { SocialIcon, DownloadIcon } from './Icons';
+import SectionRail from './SectionRail';
 import { LANDING } from '../lib/arrival';
 
 /**
@@ -7,9 +8,13 @@ import { LANDING } from '../lib/arrival';
  * left column and the edge rail; grouping them here freed the left gutter so
  * the card could widen.
  */
-export default function BottomBar() {
+export default function BottomBar({ active, onOpen }) {
   return (
-    <div className="relative mt-10 flex flex-wrap items-center gap-x-7 gap-y-4 lg:mt-0 lg:flex-nowrap lg:justify-end lg:py-4">
+    <>
+      {/* Above the contacts, where the reading ends. */}
+      <SectionRail active={active} onOpen={onOpen} />
+
+      <div className="relative mt-8 flex flex-wrap items-center gap-x-7 gap-y-4 lg:mt-0 lg:flex-nowrap lg:justify-end lg:py-4">
       <a
         data-beam="resume"
         style={{ '--arrive-delay': `${LANDING.resume}ms` }}
@@ -65,6 +70,7 @@ export default function BottomBar() {
         style={{ '--arrive-delay': `${LANDING.socials}ms` }}
         className="arrive absolute top-1/2 hidden h-px bg-gold lg:-right-12 lg:block lg:w-12"
       />
-    </div>
+      </div>
+    </>
   );
 }

@@ -6,6 +6,7 @@ import Panel from './components/Panel';
 import BeamField from './components/BeamField';
 import Fleet from './components/Fleet';
 import BottomBar from './components/BottomBar';
+import BackToTop from './components/BackToTop';
 
 export default function App() {
   const [active, open] = useHashSection();
@@ -29,6 +30,8 @@ export default function App() {
 
       <Fleet />
 
+      <BackToTop />
+
       {/* Asymmetric gutters: the left rail is gone, so that side only needs
           clearance for the base station, while the right still holds the email
           rail. That is what shifts the card left and lets it grow. */}
@@ -37,12 +40,12 @@ export default function App() {
       {/* pt-20 clears the section nav, which is fixed to the top of the screen
           below `lg`. From `lg` the nav returns to the left column and the
           padding goes back to the desktop figures. */}
-      <div className="mx-auto flex max-w-[1600px] flex-col px-4 pb-8 pt-20 sm:px-6 sm:pb-12 md:px-10 lg:h-full lg:flex-row lg:gap-9 lg:py-0 lg:pl-14 lg:pr-20">
+      <div className="mx-auto flex max-w-[1600px] flex-col px-4 pb-24 pt-20 sm:px-6 sm:pb-12 md:px-10 lg:h-full lg:flex-row lg:gap-9 lg:py-0 lg:pl-14 lg:pr-20">
         <LeftPanel active={active} onOpen={open} />
 
         <main id="main" className="flex min-w-0 flex-col lg:h-full lg:w-[73%]">
           <Panel active={active} />
-          <BottomBar />
+          <BottomBar active={active} onOpen={open} />
         </main>
       </div>
     </div>

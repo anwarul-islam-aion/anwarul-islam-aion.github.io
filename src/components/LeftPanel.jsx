@@ -1,8 +1,45 @@
+import { useEffect, useState } from 'react';
 import { profile, sections } from '../data/resume';
 import RoleRotator from './RoleRotator';
 import { LANDING, NAV_STEP } from '../lib/arrival';
 
+/** Three rules, the usual sign for "all of them, as a list". */
+function MenuIcon() {
+  return (
+    <svg
+      width="18"
+      height="18"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      aria-hidden="true"
+    >
+      <path d="M4 6h16M4 12h16M4 18h16" />
+    </svg>
+  );
+}
+
 export default function LeftPanel({ active, onOpen }) {
+  /* The phone rail scrolls sideways, so only two or three sections are ever in
+     view. This opens the same list vertically, all eight at once. */
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    if (!menuOpen) return undefined;
+    const onKey = (event) => {
+      if (event.key === 'Escape') setMenuOpen(false);
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [menuOpen]);
+
+  const choose = (id) => {
+    setMenuOpen(false);
+    onOpen(id);
+  };
+
   return (
     /* Auto margins rather than justify-center: they centre the block when it
        fits and collapse to zero when it doesn't, so a short window scrolls
@@ -58,11 +95,61 @@ export default function LeftPanel({ active, onOpen }) {
             sticky on purpose — sticky would only hold while this header was on
             screen, which is the first 200px of the page. */}
         <nav
-          className="fixed inset-x-0 top-0 z-30 border-b border-rule bg-paper/95 px-4 py-2 backdrop-blur lg:static lg:mt-6 lg:border-0 lg:bg-transparent lg:px-0 lg:py-0 lg:backdrop-blur-none"
+          className="fixed inset-x-0 top-0 z-30 flex items-center gap-2 border-b border-rule bg-paper/95 px-4 py-2 backdrop-blur lg:static lg:mt-6 lg:block lg:border-0 lg:bg-transparent lg:px-0 lg:py-0 lg:backdrop-blur-none"
           aria-label="Sections"
           data-beam="nav"
         >
-          <ul className="-mx-4 flex snap-x gap-2 overflow-x-auto px-4 lg:mx-0 lg:w-max lg:flex-col lg:gap-0 lg:overflow-visible lg:px-0 lg:pb-0">
+          {/* Phone only, and anchored outside the scroller so it stays put while
+              the chips move under it. */}
+          <div className="relative shrink-0 lg:hidden">
+            <button
+              type="button"
+              aria-label="All sections"
+              aria-expanded={menuOpen}
+              onClick={() => setMenuOpen((open) => !open)}
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-rule text-ink"
+            >
+              <MenuIcon />
+            </button>
+
+            {menuOpen && (
+              <>
+                {/* Catches the next tap anywhere else, which is how a menu is
+                    expected to close. */}
+                <button
+                  type="button"
+                  tabIndex={-1}
+                  aria-hidden="true"
+                  onClick={() => setMenuOpen(false)}
+                  className="fixed inset-0 z-40 cursor-default bg-ink/10"
+                />
+                <ul className="absolute left-0 top-12 z-50 w-64 overflow-hidden rounded-xl border border-rule bg-paper shadow-lg">
+                  {sections.map(({ id, label, accent }, index) => (
+                    <li key={id} className="border-b border-divider last:border-b-0">
+                      <a
+                        href={`#${id}`}
+                        onClick={() => choose(id)}
+                        aria-current={active === id ? 'page' : undefined}
+                        className="flex items-center justify-between gap-3 px-4 py-2.5"
+                      >
+                        <span
+                          style={{ color: active === id ? accent : undefined }}
+                          className="text-[0.78rem] font-bold uppercase tracking-[0.08em] text-nav"
+                        >
+                          {label}
+                        </span>
+                        <span className="shrink-0 font-mono text-[0.7rem] text-ink-soft">
+                          {index + 1}/{sections.length}
+                        </span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
+          </div>
+
+          <ul className="-mr-4 flex min-w-0 flex-1 snap-x gap-2 overflow-x-auto pr-4 lg:mx-0 lg:w-max lg:flex-col lg:gap-0 lg:overflow-visible lg:pr-0 lg:pb-0">
             {sections.map(({ id, label, accent }, index) => {
               const isActive = active === id;
               return (
@@ -91,6 +178,13 @@ export default function LeftPanel({ active, onOpen }) {
                       }
                       className="mr-4 hidden h-px w-8 bg-rule transition-all duration-200 group-hover:w-16 group-hover:bg-ink group-focus-visible:w-16 group-focus-visible:bg-ink motion-reduce:transition-none lg:block"
                     />
+
+                    {/* How far in you are, beside the section you are reading.
+                        The foot of the page repeats the list without it. */}
+                    <span className="mr-2 font-mono text-[0.65rem] text-ink-soft lg:hidden">
+                      {index + 1}/{sections.length}
+                    </span>
+
                     <span
                       className={`whitespace-nowrap text-[clamp(0.8rem,1.02vw,0.95rem)] font-bold uppercase tracking-[0.08em] text-nav transition-colors group-hover:text-ink group-focus-visible:text-ink ${
                         isActive ? 'underline decoration-2 underline-offset-4' : ''
