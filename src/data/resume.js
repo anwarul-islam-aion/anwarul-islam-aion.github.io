@@ -183,7 +183,7 @@ export const research = [
     roles: [],
     org: 'GNSS-Denied Navigation from Landmarks',
     orgUrl: null,
-    location: 'Under review, Robotics (MDPI)',
+    location: null,
     supervisor: null,
     hours: null,
     description:
@@ -420,18 +420,6 @@ export const publications = [
     place: null,
     year: '2027',
     status: 'Submitted',
-    doi: null,
-    url: null,
-    abstract: '',
-    presentation: null,
-  },
-  {
-    title:
-      'Calibrated, Uncertainty-Aware Fusion of Sparse Pole Bearings with Place Recognition for Cross-Track-Accurate GPS-Denied Navigation',
-    venue: 'Robotics (MDPI)',
-    place: null,
-    year: '2026',
-    status: 'Under review',
     doi: null,
     url: null,
     abstract: '',
