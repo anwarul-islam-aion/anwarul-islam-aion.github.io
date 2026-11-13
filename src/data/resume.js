@@ -95,11 +95,6 @@ export const researchInterests = [
       'SDR-based detection and mitigation of 5G C-band interference in FMCW radar altimeters.',
   },
   {
-    term: 'GNSS-Denied Navigation',
-    detail:
-      'Factor-graph SLAM integrating computer vision for navigation without satellite positioning.',
-  },
-  {
     term: 'Microwave Imaging',
     detail: 'Brain imaging techniques using Vivaldi antennas.',
   },
@@ -175,20 +170,6 @@ export const research = [
     description:
       "Cellular ISAC: using a 5G base station's own downlink to sense its surroundings while it keeps carrying data for users. The work examines how sensing quality holds up under realistic network load, and how reconfigurable intelligent surfaces can shape propagation to support it. One paper, “Range-Resolution Limits of RIS-Assisted Radar: An Element-Bandwidth Criterion and Its Full-Wave Test”, is submitted to IEEE ICC 2027 (SAC: Integrated Sensing and Communication).",
     tags: ['Cellular ISAC', '5G NR', 'RIS', 'Radar Sensing'],
-    journey: [],
-    gallery: [],
-  },
-  {
-    date: '2026',
-    roles: [],
-    org: 'GNSS-Denied Navigation from Landmarks',
-    orgUrl: null,
-    location: null,
-    supervisor: null,
-    hours: null,
-    description:
-      'A vehicle repeats a route it was taught, with no satellite positioning, fixing its position against roadside landmarks surveyed in advance. The work looks at what an estimator should and should not try to infer about a landmark it can barely observe, and at how much positioning information each choice keeps. It is tested in simulation and against a real road corridor from an open autonomous-driving dataset.',
-    tags: ['Factor-Graph SLAM', 'GTSAM', 'Computer Vision', 'Teach and Repeat'],
     journey: [],
     gallery: [],
   },
